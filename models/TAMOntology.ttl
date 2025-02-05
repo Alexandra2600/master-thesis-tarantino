@@ -1,0 +1,2224 @@
+@prefix : <http://www.semanticweb.org/tam/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix schema: <https://schema.org/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@base <http://www.semanticweb.org/tam/> .
+
+<http://www.semanticweb.org/tam> rdf:type owl:Ontology ;
+                                  dcterms:creator "Alexandra Tarantino" ;
+                                  dcterms:descrtiption "TAM (Time Assistive Management) is an ontology designed to support the structured representation of time-based activities, scheduled events, and assistive interactions for users requiring time management assistance. It models key concepts such as events, tasks, locations, people, objects, and their temporal relationships."@en ;
+                                  dcterms:hasVersion 1.0 ;
+                                  dcterms:source """https://schema.org/
+http://motools.sf.net/event/
+http://semanticweb.cs.vu.nl/2009/11/sem/""" ;
+                                  dcterms:subject "Time management, scheduling, assistive technologies, semantic web, knowledge representation, event"@en ;
+                                  dcterms:title "TAM: An ontology for Time Assistive Management"@en ;
+                                  rdfs:comment "TAM (Time Assistive Management) is an ontology designed to support the structured representation of time-based activities, scheduled events, and assistive interactions for users requiring time management assistance. It models key concepts such as events, tasks, locations, people, objects, and their temporal relationships."@en ;
+                                  rdfs:label "TAM: An ontology for Time Assistive Management"@en .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/terms/creator
+dcterms:creator rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/descrtiption
+dcterms:descrtiption rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/hasVersion
+dcterms:hasVersion rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/issued
+dcterms:issued rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/modified
+dcterms:modified rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/source
+dcterms:source rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/subject
+dcterms:subject rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/title
+dcterms:title rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2002/07/owl#equivalentClass
+owl:equivalentClass rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Datatypes
+#################################################################
+
+###  http://www.w3.org/2001/XMLSchema#date
+xsd:date rdf:type rdfs:Datatype .
+
+
+###  http://www.w3.org/2001/XMLSchema#duration
+xsd:duration rdf:type rdfs:Datatype .
+
+
+###  http://www.w3.org/2001/XMLSchema#time
+xsd:time rdf:type rdfs:Datatype .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/tam/geo
+:geo rdf:type owl:ObjectProperty ;
+     rdfs:domain :Place ;
+     rdfs:range :GeoCoordinates ,
+                :GeoShape ;
+     rdfs:comment "The geo coordinates of the place."@en ;
+     rdfs:label "geo"@en .
+
+
+
+###  http://www.semanticweb.org/tam/about
+:about rdf:type owl:ObjectProperty ;
+       owl:inverseOf :subjectOf ;
+       rdfs:domain :CreativeWork ,
+                   :Event ;
+       rdfs:range :TAMThing ;
+       rdfs:comment "The subject matter of the content"@en ;
+       rdfs:label "about"@en .
+
+
+###  http://www.semanticweb.org/tam/actor
+:actor rdf:type owl:ObjectProperty ;
+       rdfs:domain :Event ;
+       rdfs:range :Person ;
+       rdfs:comment "An actor, e.g. in tv, radio, movie, video games etc., or in an event. Actors can be associated with individual items or with a series, episode, clip."@en ;
+       rdfs:label "actor"@en .
+
+
+###  http://www.semanticweb.org/tam/affiliation
+:affiliation rdf:type owl:ObjectProperty ;
+             rdfs:domain :Person ;
+             rdfs:range :Organization ;
+             rdfs:comment "An organization that this person is affiliated with. For example, a school/university, a club, or a team."@en ;
+             rdfs:label "affiliation"@en .
+
+
+###  http://www.semanticweb.org/tam/agent
+:agent rdf:type owl:ObjectProperty ;
+       rdfs:domain :Action ;
+       rdfs:range :Organization ,
+                  :Person ;
+       rdfs:comment "The direct performer or driver of the action."@en ;
+       rdfs:label "agent"@en .
+
+
+###  http://www.semanticweb.org/tam/areaServed
+:areaServed rdf:type owl:ObjectProperty ;
+            rdfs:domain :Organization ,
+                        :Service ;
+            rdfs:range :Place ;
+            rdfs:comment "The geographic area where a service or offered item is provided."@en ;
+            rdfs:label "areaServed"@en .
+
+
+###  http://www.semanticweb.org/tam/attendee
+:attendee rdf:type owl:ObjectProperty ;
+          rdfs:domain :Event ;
+          rdfs:range :Organization ,
+                     :Person ;
+          rdfs:comment "A person or organization attending the event."@en ;
+          rdfs:label "attendee"@en .
+
+
+###  http://www.semanticweb.org/tam/author
+:author rdf:type owl:ObjectProperty ;
+        rdfs:domain :CreativeWork ;
+        rdfs:range :Organization ,
+                   :Person ;
+        rdfs:comment "The author of this content or rating."@en ;
+        rdfs:label "author"@en .
+
+
+###  http://www.semanticweb.org/tam/birthPlace
+:birthPlace rdf:type owl:ObjectProperty ;
+            rdfs:domain :Person ;
+            rdfs:range :Place ;
+            rdfs:comment "The place where the person was born."@en ;
+            rdfs:label "birthPlace"@en .
+
+
+###  http://www.semanticweb.org/tam/category
+:category rdf:type owl:ObjectProperty ;
+          rdfs:domain :Product ,
+                      :Service ;
+          rdfs:range :TAMThing ;
+          rdfs:comment "A category for the item"@en ;
+          rdfs:label "category"@en .
+
+
+###  http://www.semanticweb.org/tam/character
+:character rdf:type owl:ObjectProperty ;
+           rdfs:domain :CreativeWork ;
+           rdfs:range :Person ;
+           rdfs:comment "Fictional person connected with a creative work."@en ;
+           rdfs:label "character"@en .
+
+
+###  http://www.semanticweb.org/tam/children
+:children rdf:type owl:ObjectProperty ;
+          rdfs:domain :Person ;
+          rdfs:range :Person ;
+          rdfs:comment "A child of the person."@en ;
+          rdfs:label "children"@en .
+
+
+###  http://www.semanticweb.org/tam/citation
+:citation rdf:type owl:ObjectProperty ;
+          rdfs:domain :CreativeWork ;
+          rdfs:range :CreativeWork ;
+          rdfs:comment "A citation or reference to another creative work, such as another publication, web page, scholarly article, etc."@en ;
+          rdfs:label "citation"@en .
+
+
+###  http://www.semanticweb.org/tam/colleague
+:colleague rdf:type owl:ObjectProperty ;
+           rdfs:domain :Person ;
+           rdfs:range :Person ;
+           rdfs:comment "A colleague of the person."@en ;
+           rdfs:label "colleague"@en .
+
+
+###  http://www.semanticweb.org/tam/containedInPlace
+:containedInPlace rdf:type owl:ObjectProperty ;
+                  owl:inverseOf :containsPlace ;
+                  rdfs:domain :Place ;
+                  rdfs:range :Place ;
+                  rdfs:comment "The basic containment relation between a place and one that contains it."@en ;
+                  rdfs:label "containedInPlace"@en .
+
+
+###  http://www.semanticweb.org/tam/containsPlace
+:containsPlace rdf:type owl:ObjectProperty ;
+               rdfs:domain :Place ;
+               rdfs:range :Place ;
+               rdfs:comment "The basic containment relation between a place and one that contains it."@en ;
+               rdfs:label "containsPlace"@en .
+
+
+###  http://www.semanticweb.org/tam/contentLocation
+:contentLocation rdf:type owl:ObjectProperty ;
+                 rdfs:domain :CreativeWork ;
+                 rdfs:range :Place ;
+                 rdfs:comment "The location depicted or described in the content. For example, the location in a photograph or painting."@en ;
+                 rdfs:label "contentLocation"@en .
+
+
+###  http://www.semanticweb.org/tam/contributor
+:contributor rdf:type owl:ObjectProperty ;
+             rdfs:domain :CreativeWork ,
+                         :Event ;
+             rdfs:range :Organization ,
+                        :Person ;
+             rdfs:comment "A secondary contributor to the CreativeWork or Event."@en ;
+             rdfs:label "contributor"@en .
+
+
+###  http://www.semanticweb.org/tam/creator
+:creator rdf:type owl:ObjectProperty ;
+         rdfs:domain :CreativeWork ;
+         rdfs:range :Organization ,
+                    :Person ;
+         rdfs:comment "The creator/author of this CreativeWork. This is the same as the Author property for CreativeWork."@en ;
+         rdfs:label "creator"@en .
+
+
+###  http://www.semanticweb.org/tam/customer
+:customer rdf:type owl:ObjectProperty ;
+          rdfs:domain :Order ;
+          rdfs:range :Organization ,
+                     :Person ;
+          rdfs:comment "Party placing the order or paying the invoice."@en ;
+          rdfs:label "customer"@en .
+
+
+###  http://www.semanticweb.org/tam/deathPlace
+:deathPlace rdf:type owl:ObjectProperty ;
+            rdfs:domain :Person ;
+            rdfs:range :Place ;
+            rdfs:comment "The place where the person died."@en ;
+            rdfs:label "deathPlace"@en .
+
+
+###  http://www.semanticweb.org/tam/departement
+:departement rdf:type owl:ObjectProperty ;
+             rdfs:domain :Organization ;
+             rdfs:range :Organization ;
+             rdfs:comment "A relationship between an organization and a department of that organization, also known as an organizational unit."@en ;
+             rdfs:label "departement"@en .
+
+
+###  http://www.semanticweb.org/tam/dietFeatures
+:dietFeatures rdf:type owl:ObjectProperty ;
+              rdfs:domain :Diet .
+
+
+###  http://www.semanticweb.org/tam/editor
+:editor rdf:type owl:ObjectProperty ;
+        rdfs:domain :CreativeWork ;
+        rdfs:range :Person ;
+        rdfs:comment "Specifies the Person who edited the CreativeWork."@en ;
+        rdfs:label "editor"@en .
+
+
+###  http://www.semanticweb.org/tam/employee
+:employee rdf:type owl:ObjectProperty ;
+          rdfs:domain :Organization ;
+          rdfs:range :Person ;
+          rdfs:comment "Someone working for this organization."@en ;
+          rdfs:label "employee"@en .
+
+
+###  http://www.semanticweb.org/tam/endorsers
+:endorsers rdf:type owl:ObjectProperty ;
+           rdfs:domain :Diet ;
+           rdfs:range :Organization ,
+                      :Person ;
+           rdfs:comment "People or organizations that endorse the plan."@en ;
+           rdfs:label "endorsers"@en .
+
+
+###  http://www.semanticweb.org/tam/error
+:error rdf:type owl:ObjectProperty ;
+       rdfs:domain :Action ;
+       rdfs:range :TAMThing ;
+       rdfs:comment "For failed actions, more information on the cause of the failure."@en ;
+       rdfs:label "error"@en .
+
+
+###  http://www.semanticweb.org/tam/event
+:event rdf:type owl:ObjectProperty ;
+       rdfs:domain :Action ,
+                   :Organization ,
+                   :Place ;
+       rdfs:range :Event ;
+       rdfs:comment "Upcoming or past event associated with this place, organization, or action.."@en ;
+       rdfs:label "event"@en .
+
+
+###  http://www.semanticweb.org/tam/eventSchedule
+:eventSchedule rdf:type owl:ObjectProperty ;
+               rdfs:domain :Event ;
+               rdfs:range :Schedule ;
+               rdfs:comment "Associates an event with a schedule."@en ;
+               rdfs:label "eventSchedule"@en .
+
+
+###  http://www.semanticweb.org/tam/follows
+:follows rdf:type owl:ObjectProperty ;
+         rdfs:domain :Person ;
+         rdfs:range :Person ;
+         rdfs:comment "The most generic uni-directional social relation. "@en ;
+         rdfs:label "follows"@en .
+
+
+###  http://www.semanticweb.org/tam/founder
+:founder rdf:type owl:ObjectProperty ;
+         rdfs:domain :Organization ;
+         rdfs:range :Organization ,
+                    :Person ;
+         rdfs:comment "A person or organization who founded this organization."@en ;
+         rdfs:label "founder"@en .
+
+
+###  http://www.semanticweb.org/tam/foundingLocation
+:foundingLocation rdf:type owl:ObjectProperty ;
+                  rdfs:domain :Organization ;
+                  rdfs:range :Place ;
+                  rdfs:comment "The place where the Organization was founded."@en ;
+                  rdfs:label "foundingLocation"@en .
+
+
+###  http://www.semanticweb.org/tam/geoContains
+:geoContains rdf:type owl:ObjectProperty ;
+             rdfs:domain :Place ;
+             rdfs:range :Place ;
+             rdfs:comment "Represents a relationship between two geometries (or the places they represent), relating a containing geometry to a contained geometry. " ;
+             rdfs:label "geoContains"@en .
+
+###  http://www.semanticweb.org/tam/geoCoveredBy
+:geoCoveredBy rdf:type owl:ObjectProperty ;
+              rdfs:domain :Place ;
+              rdfs:range :Place ;
+              rdfs:comment "Represents a relationship between two geometries (or the places they represent), relating a geometry to another that covers it. As defined in DE-9IM." ;
+              rdfs:label "geoCoveredBy"@en .
+
+###  http://www.semanticweb.org/tam/geoCovers
+:geoCovers rdf:type owl:ObjectProperty ;
+           rdfs:domain :Place ;
+           rdfs:range :Place ;
+           rdfs:comment "Represents a relationship between two geometries (or the places they represent), relating a covering geometry to a covered geometry. As defined in DE-9IM." ;
+           rdfs:label "geoCovers"@en .
+
+###  http://www.semanticweb.org/tam/geoCrosses
+:geoCrosses rdf:type owl:ObjectProperty ;
+            rdfs:domain :Place ;
+            rdfs:range :Place ;
+            rdfs:comment "Represents a relationship between two geometries (or the places they represent), relating a geometry to another that crosses it: \"a crosses b: they have some but not all interior points in common, and the dimension of the intersection is less than that of at least one of them\" (a,b,c,d = geometries)" ;
+            rdfs:label "geoCrosses"@en .
+
+###  http://www.semanticweb.org/tam/geoDisjoint
+:geoDisjoint rdf:type owl:ObjectProperty ;
+             rdfs:domain :Place ;
+             rdfs:range :Place ;
+             rdfs:comment "Represents spatial relations in which two geometries (or the places they represent) are topologically disjoint: they have no point in common. They form a set of disconnected geometries." ;
+             rdfs:label "geoDisjoint"@en .
+
+
+###  http://www.semanticweb.org/tam/geoEquals
+:geoEquals rdf:type owl:ObjectProperty ;
+           rdfs:domain :Place ;
+           rdfs:range :Place ;
+           rdfs:comment "Represents spatial relations in which two geometries (or the places they represent) are topologically equal, as defined in DE-9IM. \"Two geometries are topologically equal if their interiors intersect and no part of the interior or boundary of one geometry intersects the exterior of the other\" (a,b,c,d = geometries)" ;
+           rdfs:label "geoEquals"@en .
+
+###  http://www.semanticweb.org/tam/geoIntersects
+:geoIntersects rdf:type owl:ObjectProperty ;
+              rdfs:domain :Place ;
+              rdfs:range :Place ;
+              rdfs:comment "Represents spatial relations in which two geometries (or the places they represent) have at least one point in common. As defined in DE-9IM." ;
+              rdfs:label "geoIntersects"@en .
+
+###  http://www.semanticweb.org/tam/geoOverlaps
+:geoOverlaps rdf:type owl:ObjectProperty ;
+            rdfs:domain :Place ;
+            rdfs:range :Place ;
+            rdfs:comment "Represents spatial relations in which two geometries (or the places they represent) have some but not all points in common. As defined in DE-9IM." ;
+            rdfs:label "geoOverlaps"@en .
+
+###  http://www.semanticweb.org/tam/geoTouches
+:geoTouches rdf:type owl:ObjectProperty ;
+           rdfs:domain :Place ;
+           rdfs:range :Place ;
+           rdfs:comment "Represents spatial relations in which two geometries (or the places they represent) have at least one boundary point in common, but no interior points." ;
+           rdfs:label "geoTouches"@en .
+
+
+
+###  http://www.semanticweb.org/tam/hasOccupation
+:hasOccupation rdf:type owl:ObjectProperty ;
+               rdfs:domain :Person ;
+               rdfs:range :Occupation ;
+               rdfs:comment "The person's occupation."@en ;
+               rdfs:label "hasOccupation"@en .
+
+
+###  http://www.semanticweb.org/tam/hasPOS
+:hasPOS rdf:type owl:ObjectProperty ;
+        rdfs:domain :Organization ,
+                    :Person ;
+        rdfs:range :Place ;
+        rdfs:comment "Points-of-Sales operated by the organization or person. "@en ;
+        rdfs:label "hasPOS"@en .
+
+
+###  http://www.semanticweb.org/tam/hasPart
+:hasPart rdf:type owl:ObjectProperty ;
+         owl:inverseOf :isPartOf ;
+         rdfs:domain :CreativeWork ;
+         rdfs:range :CreativeWork ,
+                    :TAMThing ;
+         rdfs:comment "Indicates an item or CreativeWork that is part of this item, or CreativeWork."@en ;
+         rdfs:label "hasPart"@en .
+
+
+###  http://www.semanticweb.org/tam/homeLocation
+:homeLocation rdf:type owl:ObjectProperty ;
+              rdfs:domain :Person ;
+              rdfs:range :Place ;
+              rdfs:comment "A contact location for a person's residence."@en ;
+              rdfs:label "homeLocation"@en .
+
+
+###  http://www.semanticweb.org/tam/instrument
+:instrument rdf:type owl:ObjectProperty ;
+            rdfs:domain :Action ;
+            rdfs:range :TAMThing ;
+            rdfs:comment "The object that helped the agent perform the action."@en ;
+            rdfs:label "instrument"@en .
+
+
+###  http://www.semanticweb.org/tam/isBasedOn
+:isBasedOn rdf:type owl:ObjectProperty ;
+           rdfs:domain :CreativeWork ;
+           rdfs:range :CreativeWork ,
+                      :Product ;
+           rdfs:comment "A resource from which this work is derived or from which it is a modification or adaptation."@en ;
+           rdfs:label "isBasedOn"@en .
+
+
+###  http://www.semanticweb.org/tam/isPartOf
+:isPartOf rdf:type owl:ObjectProperty ;
+          rdfs:domain :CreativeWork ;
+          rdfs:range :CreativeWork ;
+          rdfs:comment "Indicates a CreativeWork that this CreativeWork is (in some sense) part of."@en ;
+          rdfs:label "isPartOf"@en .
+
+
+###  http://www.semanticweb.org/tam/isRelatedTo
+:isRelatedTo rdf:type owl:ObjectProperty ;
+             rdfs:domain :Product ,
+                         :Service ;
+             rdfs:range :Product ,
+                        :Service ;
+             rdfs:comment "A pointer to another, somehow related product (or multiple products)."@en ;
+             rdfs:label "isRelatedTo"@en .
+
+
+###  http://www.semanticweb.org/tam/issuedBy
+:issuedBy rdf:type owl:ObjectProperty ;
+          rdfs:domain :Ticket ;
+          rdfs:range :Organization ,
+                     :Person ;
+          rdfs:comment "The organization issuing the ticket or permit."@en ;
+          rdfs:label "issuedBy"@en .
+
+
+###  http://www.semanticweb.org/tam/item
+:item rdf:type owl:ObjectProperty ;
+      rdfs:domain :ListItem ;
+      rdfs:range :TAMThing ;
+      rdfs:comment "An entity represented by an entry in a list or data feed (e.g. an 'artist' in a list of 'artists')."@en ;
+      rdfs:label "item"@en .
+
+
+###  http://www.semanticweb.org/tam/itemListElement
+:itemListElement rdf:type owl:ObjectProperty ;
+                 rdfs:domain :ItemList ;
+                 rdfs:range :ListItem ,
+                            :TAMThing ;
+                 rdfs:comment "An item in the list."@en ;
+                 rdfs:label "itemListElement"@en .
+
+
+###  http://www.semanticweb.org/tam/itinerary
+:itinerary rdf:type owl:ObjectProperty ;
+           rdfs:domain :Trip ;
+           rdfs:range :ItemList ,
+                      :Place ;
+           rdfs:comment "Destination(s) ( Place ) that make up a trip. For a trip where destination order is important use ItemList to specify that order."@en ;
+           rdfs:label "itinerary"@en .
+
+
+###  http://www.semanticweb.org/tam/knows
+:knows rdf:type owl:ObjectProperty ;
+       owl:inverseOf :knows ;
+       rdfs:domain :Person ;
+       rdfs:range :Person ;
+       rdfs:comment "The most generic bi-directional social/work relation."@en ;
+       rdfs:label "knows"@en .
+
+
+###  http://www.semanticweb.org/tam/knowsAbout
+:knowsAbout rdf:type owl:ObjectProperty ;
+            rdfs:domain :Organization ,
+                        :Person ;
+            rdfs:range :TAMThing ;
+            rdfs:comment "Of a Person, and less typically of an Organization, to indicate a topic that is known about - suggesting possible expertise but not implying it."@en ;
+            rdfs:label "knowsAbout"@en .
+
+
+###  http://www.semanticweb.org/tam/location
+:location rdf:type owl:ObjectProperty ;
+          rdfs:domain :Action ,
+                      :Event ,
+                      :Organization ;
+          rdfs:range :Place ;
+          rdfs:comment "The location of, for example, where an event is happening, where an organization is located, or where an action takes place."@en ;
+          rdfs:label "location"@en .
+
+
+###  http://www.semanticweb.org/tam/mainEntity
+:mainEntity rdf:type owl:ObjectProperty ;
+            rdfs:domain :CreativeWork ;
+            rdfs:range :TAMThing ;
+            rdfs:comment "Indicates the primary entity described in some page or other CreativeWork."@en ;
+            rdfs:label "mainEntity"@en .
+
+
+###  http://www.semanticweb.org/tam/member
+:member rdf:type owl:ObjectProperty ;
+        owl:inverseOf :memberOf ;
+        rdfs:domain :Organization ;
+        rdfs:range :Organization ,
+                   :Person ;
+        rdfs:comment "A member of an Organization or a ProgramMembership. Organizations can be members of organizations; ProgramMembership is typically for individuals."@en ;
+        rdfs:label "member"@en .
+
+
+###  http://www.semanticweb.org/tam/memberOf
+:memberOf rdf:type owl:ObjectProperty ;
+          rdfs:domain :Organization ,
+                      :Person ;
+          rdfs:range :Organization ;
+          rdfs:comment "An Organization (or ProgramMembership) to which this Person or Organization belongs."@en ;
+          rdfs:label "memberOf"@en .
+
+
+###  http://www.semanticweb.org/tam/mentions
+:mentions rdf:type owl:ObjectProperty ;
+          rdfs:domain :CreativeWork ;
+          rdfs:range :TAMThing ;
+          rdfs:comment "Indicates that the CreativeWork contains a reference to, but is not necessarily about a concept."@en ;
+          rdfs:label "mentions"@en .
+
+
+###  http://www.semanticweb.org/tam/nextItem
+:nextItem rdf:type owl:ObjectProperty ;
+          rdfs:domain :ListItem ;
+          rdfs:range :ListItem ;
+          rdfs:comment "A link to the ListItem that follows the current one."@en ;
+          rdfs:label "nextItem"@en .
+
+
+###  http://www.semanticweb.org/tam/object
+:object rdf:type owl:ObjectProperty ;
+        rdfs:domain :Action ;
+        rdfs:range :TAMThing ;
+        rdfs:comment "The object upon which the action is carried out, whose state is kept intact or changed."@en ;
+        rdfs:label "object"@en .
+
+
+###  http://www.semanticweb.org/tam/observationAbout
+:observationAbout rdf:type owl:ObjectProperty ;
+                  rdfs:domain :Observation ;
+                  rdfs:range :Place ,
+                             :TAMThing ;
+                  rdfs:comment "The observationAbout property identifies an entity, often a Place, associated with an Observation."@en ;
+                  rdfs:label "observationAbout"@en .
+
+
+###  http://www.semanticweb.org/tam/occupationLocation
+:occupationLocation rdf:type owl:ObjectProperty ;
+                    rdfs:domain :Occupation ;
+                    rdfs:range :Place ;
+                    rdfs:comment "The location of the occupation."@en ;
+                    rdfs:label "occupationLocation"@en .
+
+
+###  http://www.semanticweb.org/tam/orderItem
+:orderItem rdf:type owl:ObjectProperty ;
+           rdfs:domain :Order ;
+           rdfs:range :Product ,
+                      :Service ;
+           rdfs:comment "The item ordered."@en ;
+           rdfs:label "orderItem"@en .
+
+
+###  http://www.semanticweb.org/tam/organizer
+:organizer rdf:type owl:ObjectProperty ;
+           rdfs:domain :Event ;
+           rdfs:range :Organization ,
+                      :Person ;
+           rdfs:comment "An organizer of an Event."@en ;
+           rdfs:label "organizer"@en .
+
+
+###  http://www.semanticweb.org/tam/owns
+:owns rdf:type owl:ObjectProperty ;
+      rdfs:domain :Organization ,
+                  :Person ;
+      rdfs:range :Product ;
+      rdfs:comment "Products owned by the organization or person."@en ;
+      rdfs:label "owns"@en .
+
+
+###  http://www.semanticweb.org/tam/parent
+:parent rdf:type owl:ObjectProperty ;
+        rdfs:domain :Person ;
+        rdfs:range :Person ;
+        rdfs:comment "A parent of this person."@en ;
+        rdfs:label "parent"@en .
+
+
+###  http://www.semanticweb.org/tam/partOfTrip
+:partOfTrip rdf:type owl:ObjectProperty ;
+            owl:inverseOf :subTrip ;
+            rdfs:domain :Trip ;
+            rdfs:range :Trip ;
+            rdfs:comment "Identifies that this Trip is a subTrip of another Trip."@en ;
+            rdfs:label "partOfTrip"@en .
+
+
+###  http://www.semanticweb.org/tam/participant
+:participant rdf:type owl:ObjectProperty ;
+             rdfs:domain :Action ;
+             rdfs:range :Organization ,
+                        :Person ;
+             rdfs:comment "Other co-agents that participated in the action indirectly."@en ;
+             rdfs:label "participant"@en .
+
+
+###  http://www.semanticweb.org/tam/previousItem
+:previousItem rdf:type owl:ObjectProperty ;
+              rdfs:domain :ListItem ;
+              rdfs:range :ListItem ;
+              rdfs:comment "A link to the ListItem that preceeds the current one."@en ;
+              rdfs:label "previousItem"@en .
+
+
+###  http://www.semanticweb.org/tam/producer
+:producer rdf:type owl:ObjectProperty ;
+          rdfs:domain :CreativeWork ;
+          rdfs:range :Organization ,
+                     :Person ;
+          rdfs:comment "The person or organization who produced the work (e.g. music album, movie, tv/radio series etc.)."@en ;
+          rdfs:label "producer"@en .
+
+
+###  http://www.semanticweb.org/tam/produces
+:produces rdf:type owl:ObjectProperty ;
+          rdfs:domain :Service ;
+          rdfs:range :TAMThing ;
+          rdfs:comment "The tangible thing generated by the service, e.g. a passport, permit, etc."@en ;
+          rdfs:label "produces"@en .
+
+
+###  http://www.semanticweb.org/tam/provider
+:provider rdf:type owl:ObjectProperty ;
+          rdfs:domain :Action ,
+                      :CreativeWork ,
+                      :Reservation ,
+                      :Service ,
+                      :Trip ;
+          rdfs:range :Organization ,
+                     :Person ;
+          rdfs:comment "The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider."@en ;
+          rdfs:label "provider"@en .
+
+
+###  http://www.semanticweb.org/tam/publication
+:publication rdf:type owl:ObjectProperty ;
+             rdfs:domain :CreativeWork ;
+             rdfs:range :Event ;
+             rdfs:comment "A publication event associated with the item."@en ;
+             rdfs:label "publication"@en .
+
+
+###  http://www.semanticweb.org/tam/recipient
+:recipient rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :participant ;
+           rdfs:domain :Message ;
+           rdfs:range :Organization ,
+                      :Person ;
+           rdfs:comment "A sub property of participant. The participant who is at the receiving end of the action."@en ;
+           rdfs:label "recipient"@en .
+
+
+###  http://www.semanticweb.org/tam/relatedTo
+:relatedTo rdf:type owl:ObjectProperty ;
+           rdfs:domain :Person ;
+           rdfs:range :Person ;
+           rdfs:comment "The most generic familial relation"@en ;
+           rdfs:label "relatedTo"@en .
+
+
+###  http://www.semanticweb.org/tam/reservationFor
+:reservationFor rdf:type owl:ObjectProperty ;
+                rdfs:domain :Reservation ;
+                rdfs:range :TAMThing ;
+                rdfs:comment "The thing -- flight, event, restaurant, etc. being reserved."@en ;
+                rdfs:label "reservationFor"@en .
+
+
+###  http://www.semanticweb.org/tam/reservationTicket
+:reservationTicket rdf:type owl:ObjectProperty ;
+                   rdfs:domain :Reservation ;
+                   rdfs:range :Ticket ;
+                   rdfs:comment "A ticket associated with the reservation."@en ;
+                   rdfs:label "reservationTicket"@en .
+
+
+###  http://www.semanticweb.org/tam/result
+:result rdf:type owl:ObjectProperty ;
+        rdfs:domain :Action ;
+        rdfs:range :TAMThing ;
+        rdfs:comment "The result produced in the action."@en ;
+        rdfs:label "result"@en .
+
+
+###  http://www.semanticweb.org/tam/seller
+:seller rdf:type owl:ObjectProperty ;
+        rdfs:domain :Order ;
+        rdfs:range :Organization ,
+                   :Person ;
+        rdfs:comment "An entity which offers (sells / leases / lends / loans) the services / goods. A seller may also be a provider."@en ;
+        rdfs:label "seller"@en .
+
+
+###  http://www.semanticweb.org/tam/sender
+:sender rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf :participant ;
+        rdfs:domain :Message ;
+        rdfs:range :Organization ,
+                   :Person ;
+        rdfs:comment "A sub property of participant. The participant who is at the sending end of the action."@en ;
+        rdfs:label "sender"@en .
+
+
+###  http://www.semanticweb.org/tam/serviceOutput
+:serviceOutput rdf:type owl:ObjectProperty ;
+               rdfs:domain :Service ;
+               rdfs:range :TAMThing ;
+               rdfs:comment "The tangible thing generated by the service, e.g. a passport, permit, etc."@en ;
+               rdfs:label "serviceOutput"@en .
+
+
+###  http://www.semanticweb.org/tam/sibling
+:sibling rdf:type owl:ObjectProperty ;
+         rdfs:domain :Person ;
+         rdfs:range :Person ;
+         rdfs:comment "A sibling of the person."@en ;
+         rdfs:label "sibling"@en .
+
+
+###  http://www.semanticweb.org/tam/spouse
+:spouse rdf:type owl:ObjectProperty ;
+        rdfs:domain :Person ;
+        rdfs:range :Person ;
+        rdfs:comment "The person's spouse."@en ;
+        rdfs:label "spouse"@en .
+
+
+###  http://www.semanticweb.org/tam/subEvent
+:subEvent rdf:type owl:ObjectProperty ;
+          rdfs:domain :Event ;
+          rdfs:range :Event ;
+          rdfs:comment "An Event that is part of this event. For example, a conference event includes many presentations, each of which is a subEvent of the conference."@en ;
+          rdfs:label "subEvent"@en .
+
+
+###  http://www.semanticweb.org/tam/subTrip
+:subTrip rdf:type owl:ObjectProperty ;
+         rdfs:domain :Trip ;
+         rdfs:range :Trip ;
+         rdfs:comment "Identifies that this Trip is a subTrip of another Trip."@en ;
+         rdfs:label "subTrip"@en .
+
+
+###  http://www.semanticweb.org/tam/subjectOf
+:subjectOf rdf:type owl:ObjectProperty ;
+           rdfs:domain :TAMThing ;
+           rdfs:range :CreativeWork ,
+                      :Event ;
+           rdfs:comment "A CreativeWork or Event about this Thing Inverse property: about"@en ;
+           rdfs:label "subjectOf"@en .
+
+
+###  http://www.semanticweb.org/tam/superEvent
+:superEvent rdf:type owl:ObjectProperty ;
+            rdfs:domain :Event ;
+            rdfs:range :Event ;
+            rdfs:comment "An event that this event is a part of. For example, a collection of individual music performances might each have a music festival as their superEvent."@en ;
+            rdfs:label "superEvent"@en .
+
+
+###  http://www.semanticweb.org/tam/tripOrigin
+:tripOrigin rdf:type owl:ObjectProperty ;
+            rdfs:domain :Trip ;
+            rdfs:range :Place ;
+            rdfs:comment "The place of departure."@en ;
+            rdfs:label "tripOrigin"@en .
+
+
+###  http://www.semanticweb.org/tam/underName
+:underName rdf:type owl:ObjectProperty ;
+           rdfs:domain :Reservation ,
+                       :Ticket ;
+           rdfs:range :Organization ,
+                      :Person ;
+           rdfs:comment "The person or organization the reservation or ticket is for"@en ;
+           rdfs:label "underName"@en .
+
+
+###  http://www.semanticweb.org/tam/workLocation
+:workLocation rdf:type owl:ObjectProperty ;
+              rdfs:domain :Person ;
+              rdfs:range :Place ;
+              rdfs:comment "A contact location for a person's place of work."@en ;
+              rdfs:label "workLocation"@en .
+
+
+###  http://www.semanticweb.org/tam/worksFor
+:worksFor rdf:type owl:ObjectProperty ;
+          rdfs:domain :Person ;
+          rdfs:range :Organization ;
+          rdfs:comment "Organizations that the person works for."@en ;
+          rdfs:label "worksFor"@en .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/tam/abstract
+:abstract rdf:type owl:DatatypeProperty ;
+          rdfs:domain :CreativeWork ;
+          rdfs:range xsd:string ;
+          rdfs:comment "An abstract is a short description that summarizes a CreativeWork"@en ;
+          rdfs:label "abstract"@en .
+
+
+###  http://www.semanticweb.org/tam/actionProcess
+:actionProcess rdf:type owl:DatatypeProperty ;
+               rdfs:domain :Action ;
+               rdfs:range xsd:string ;
+               rdfs:comment "Description of the process by which the action was performed."@en ;
+               rdfs:label "actionProcess"@en .
+
+
+###  http://www.semanticweb.org/tam/actionStatus
+:actionStatus rdf:type owl:DatatypeProperty ;
+              rdfs:domain :Action ;
+              rdfs:range xsd:string ;
+              rdfs:comment "Indicates the current disposition of the Action."@en ;
+              rdfs:label "actionStatus"@en .
+
+###  http://www.semanticweb.org/tam/activeIngredient
+:activeIngredient rdf:type owl:DatatypeProperty ;
+                  rdfs:domain :Drug ;
+                  rdfs:range xsd:string ;
+                  rdfs:comment "An active ingredient, typically chemical compounds and/or biologic substances."@en ;
+                  rdfs:label "activeIngredient"@en .
+
+###  http://www.semanticweb.org/tam/additionalName
+:additionalName rdf:type owl:DatatypeProperty ;
+                rdfs:domain :Person ;
+                rdfs:range xsd:string ;
+                rdfs:comment "An additional name for a Person, can be used for a middle name."@en ;
+                rdfs:label "additionalName"@en .
+
+
+###  http://www.semanticweb.org/tam/address
+:address rdf:type owl:DatatypeProperty ;
+         rdfs:domain :Organization ,
+                     :Person ,
+                     :Place,
+                     :GeoCoordinates,
+                     :GeoShape ;
+         rdfs:range xsd:string ;
+         rdfs:comment "Physical address of the item."@en ;
+         rdfs:label "address"@en .
+
+### http://www.semanticweb.org/tam/addressCountry
+:addressCountry rdf:type owl:DatatypeProperty ;
+                rdfs:domain :GeoCoordinates,
+                            :GeoShape ;
+                rdfs:range xsd:string ;
+                rdfs:comment "The country. For example, USA. You can also provide the two-letter ISO 3166-1 alpha-2 country code."@en ;
+                rdfs:label "addressCountry"@en .
+
+
+###  http://www.semanticweb.org/tam/administrationRoute
+:administrationRoute rdf:type owl:DatatypeProperty ;
+                     rdfs:domain :Drug ;
+                     rdfs:range xsd:string ;
+                     rdfs:comment "A route by which this drug may be administered, e.g. 'oral'."@en ;
+                     rdfs:label "administrationRoute"@en .
+
+
+###  http://www.semanticweb.org/tam/alcoholConsumation
+:alcoholConsumation rdf:type owl:DatatypeProperty ;
+                    rdfs:domain :Person ;
+                    rdfs:range xsd:boolean ;
+                    rdfs:comment "Indicates whether the person consumes alcohol."@en ;
+                    rdfs:label "alcoholConsumation"@en .
+
+
+###  http://www.semanticweb.org/tam/alcogolWarning
+:alcogolWarning rdf:type owl:DatatypeProperty ;
+                rdfs:domain :Drug ;
+                rdfs:range xsd:string ;
+                rdfs:comment "Any precaution, guidance, contraindication, etc. related to consumption of alcohol while taking this drug."@en ;
+                rdfs:label "alcogolWarning"@en .
+
+
+###  http://www.semanticweb.org/tam/alternateName
+:alternateName rdf:type owl:DatatypeProperty ;
+               rdfs:domain :TAMThing ;
+               rdfs:range xsd:string ;
+               rdfs:comment "An alias for the item"@en ;
+               rdfs:label "alternateName"@en .
+
+
+###  http://www.semanticweb.org/tam/archivedAt
+:archivedAt rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf :url ;
+            rdfs:domain :CreativeWork ;
+            rdfs:range xsd:anyURI ;
+            rdfs:comment "Indicates a page or other link involved in archival of a CreativeWork."@en ;
+            rdfs:label "archivedAt"@en .
+
+
+###  http://www.semanticweb.org/tam/arrivalTime
+:arrivalTime rdf:type owl:DatatypeProperty ;
+             rdfs:domain :Trip ;
+             rdfs:range xsd:dateTime ;
+             rdfs:comment "The expected arrival time."@en ;
+             rdfs:label "arrivalTime"@en .
+
+
+###  http://www.semanticweb.org/tam/associatedMedia
+:associatedMedia rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf :image ;
+                 rdfs:domain :CreativeWork ;
+                 rdfs:range xsd:anyURI ;
+                 rdfs:comment "A media object that encodes this CreativeWork."@en ;
+                 rdfs:label "associatedMedia"@en .
+
+
+###  http://www.semanticweb.org/tam/availableChannel
+:availableChannel rdf:type owl:DatatypeProperty ;
+                  rdfs:domain :Service ;
+                  rdfs:range xsd:string ;
+                  rdfs:comment "A means of accessing the service (e.g. a phone bank, a web site, a location, etc.)."@en ;
+                  rdfs:label "availableChannel"@en .
+
+###  http://www.semanticweb.org/tam/availableStrength
+:availableStrength rdf:type owl:DatatypeProperty ;
+                   rdfs:domain :Drug ;
+                   rdfs:range xsd:string ;
+                   rdfs:comment "An available dosage strength for the drug."@en ;
+                   rdfs:label "availableStrength"@en .
+
+
+###  http://www.semanticweb.org/tam/award
+:award rdf:type owl:DatatypeProperty ;
+       rdfs:domain :CreativeWork ,
+                   :Organization ,
+                   :Person ,
+                   :Product ,
+                   :Service ;
+       rdfs:range xsd:string ;
+       rdfs:comment "An award won by or for this item."@en ;
+       rdfs:label "award"@en .
+
+
+###  http://www.semanticweb.org/tam/billingAddress
+:billingAddress rdf:type owl:DatatypeProperty ;
+                rdfs:domain :Order ;
+                rdfs:range xsd:string ;
+                rdfs:comment "The billing address for the order."@en ;
+                rdfs:label "billingAddress"@en .
+
+
+###  http://www.semanticweb.org/tam/birthDate
+:birthDate rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Person ;
+           rdfs:range xsd:date ;
+           rdfs:comment "Date of birth."@en ;
+           rdfs:label "birthDate"@en .
+
+
+###  http://www.semanticweb.org/tam/bloodType
+:bloodType rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Person ;
+           rdfs:range xsd:string ;
+           rdfs:comment "The blood type of the person."@en ;
+           rdfs:label "bloodType"@en .
+
+
+###  http://www.semanticweb.org/tam/bookingTime
+:bookingTime rdf:type owl:DatatypeProperty ;
+             rdfs:domain :Reservation ;
+             rdfs:range xsd:dateTime ;
+             rdfs:comment "The date and time the reservation was booked."@en ;
+             rdfs:label "bookingTime"@en .
+
+###  http://www.semanticweb.org/tam/box
+:box rdf:type owl:DatatypeProperty ;
+     rdfs:domain :GeoShape ;
+     rdfs:range xsd:string ;
+     rdfs:comment "A box is the area enclosed by the rectangle formed by two points. The first point is the lower corner, the second point is the upper corner. A box is expressed as two points separated by a space character. "@en ;
+     rdfs:label "box"@en .
+
+
+###  http://www.semanticweb.org/tam/byDay
+:byDay rdf:type owl:DatatypeProperty ;
+       rdfs:domain :Schedule ;
+       rdfs:range xsd:string ;
+       rdfs:comment "Defines the day of the week upon which the Event takes place."@en ;
+       rdfs:label "byDay"@en .
+
+
+###  http://www.semanticweb.org/tam/byMonth
+:byMonth rdf:type owl:DatatypeProperty ;
+         rdfs:domain :Schedule ;
+         rdfs:range xsd:integer ;
+         rdfs:comment "Defines the month of the year upon which the Event takes place. Specified as an Integer between 1-12"@en ;
+         rdfs:label "byMonth"@en .
+
+
+###  http://www.semanticweb.org/tam/byMonthDay
+:byMonthDay rdf:type owl:DatatypeProperty ;
+            rdfs:domain :Schedule ;
+            rdfs:range xsd:integer ;
+            rdfs:comment "Defines the day of the month upon which the Event takes place. Specified as an Integer between 1-31"@en ;
+            rdfs:label "byMonthDay"@en .
+
+
+###  http://www.semanticweb.org/tam/byMonthWeek
+:byMonthWeek rdf:type owl:DatatypeProperty ;
+             rdfs:domain :Schedule ;
+             rdfs:range xsd:integer ;
+             rdfs:comment "Defines the week of the month upon which the Event takes place."@en ;
+             rdfs:label "byMonthWeek"@en .
+
+###  http://www.semanticweb.org/tam/category
+:category rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Product, 
+                        :Service ;
+          rdfs:range xsd:string ;
+          rdfs:comment "A category for the item. "@en ;
+          rdfs:label "category"@en .
+
+
+###  http://www.semanticweb.org/tam/circle
+:circle rdf:type owl:DatatypeProperty ;
+        rdfs:domain :GeoShape ;
+        rdfs:range xsd:string ;
+        rdfs:comment "A circle is the circular region of a specified radius around a given latitude and longitude. A circle is expressed as a pair followed by a radius in meters. "@en ;
+        rdfs:label "circle"@en .
+
+###  http://www.semanticweb.org/tam/color
+:color rdf:type owl:DatatypeProperty ;
+       rdfs:domain :Product ;
+       rdfs:range xsd:string ;
+       rdfs:comment "The color of the product."@en ;
+       rdfs:label "color"@en .
+
+###  http://www.semanticweb.org/tam/comment
+:comment rdf:type owl:DatatypeProperty ;
+         rdfs:domain :CreativeWork ;
+         rdfs:range xsd:string ;
+         rdfs:comment "Comments, typically from users."@en ;
+         rdfs:label "comment"@en .
+
+
+###  http://www.semanticweb.org/tam/confirmationNumber
+:confirmationNumber rdf:type owl:DatatypeProperty ;
+                    rdfs:domain :Order ;
+                    rdfs:range xsd:string ;
+                    rdfs:comment "A number that confirms the given order or payment."@en ;
+                    rdfs:label "confirmationNumber"@en .
+
+
+###  http://www.semanticweb.org/tam/contactPoint
+:contactPoint rdf:type owl:DatatypeProperty ;
+              rdfs:domain :Organization ,
+                          :Person ;
+              rdfs:range xsd:string ;
+              rdfs:comment "A contact point for a person or organization."@en ;
+              rdfs:label "contactPoint"@en .
+
+
+###  http://www.semanticweb.org/tam/contentReferenceTime
+:contentReferenceTime rdf:type owl:DatatypeProperty ;
+                      rdfs:domain :CreativeWork ;
+                      rdfs:range xsd:dateTime ;
+                      rdfs:comment "The specific time described by a creative work, for works (e.g. articles, video objects etc.) that emphasise a particular moment within an Event."@en ;
+                      rdfs:label "contentReferenceTime"@en .
+
+
+###  http://www.semanticweb.org/tam/creativeWorkStatus
+:creativeWorkStatus rdf:type owl:DatatypeProperty ;
+                    rdfs:domain :CreativeWork ;
+                    rdfs:range xsd:string ;
+                    rdfs:comment "The status of the creative work."@en ;
+                    rdfs:label "creativeWorkStatus"@en .
+
+
+###  http://www.semanticweb.org/tam/dateCreated
+:dateCreated rdf:type owl:DatatypeProperty ;
+             rdfs:domain :CreativeWork ;
+             rdfs:range xsd:dateTime ;
+             rdfs:comment "The date on which the CreativeWork was created."@en ;
+             rdfs:label "dateCreated"@en .
+
+
+###  http://www.semanticweb.org/tam/dateIssued
+:dateIssued rdf:type owl:DatatypeProperty ;
+            rdfs:domain :Ticket ;
+            rdfs:range xsd:dateTime ;
+            rdfs:comment "The date the ticked was issued."@en ;
+            rdfs:label "dateIssued"@en .
+
+
+###  http://www.semanticweb.org/tam/dateModified
+:dateModified rdf:type owl:DatatypeProperty ;
+              rdfs:domain :CreativeWork ;
+              rdfs:range xsd:dateTime ;
+              rdfs:comment "The date on which the CreativeWork was most recently modified."@en ;
+              rdfs:label "dateModified"@en .
+
+
+###  http://www.semanticweb.org/tam/datePublished
+:datePublished rdf:type owl:DatatypeProperty ;
+               rdfs:domain :CreativeWork ;
+               rdfs:range xsd:dateTime ;
+               rdfs:comment "Date of first broadcast/publication."@en ;
+               rdfs:label "datePublished"@en .
+
+
+###  http://www.semanticweb.org/tam/dateRead
+:dateRead rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Message ;
+          rdfs:range xsd:dateTime ;
+          rdfs:comment "The date on which the message was read by the user."@en ;
+          rdfs:label "dateRead"@en .
+
+
+###  http://www.semanticweb.org/tam/dateReceived
+:dateReceived rdf:type owl:DatatypeProperty ;
+              rdfs:domain :Message ;
+              rdfs:range xsd:dateTime ;
+              rdfs:comment "The date on which the message was received by the user."@en ;
+              rdfs:label "dateReceived"@en .
+
+
+###  http://www.semanticweb.org/tam/dateSent
+:dateSent rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Message ;
+          rdfs:range xsd:dateTime ;
+          rdfs:comment "The date on which the message was sent by the user."@en ;
+          rdfs:label "dateSent"@en .
+
+
+###  http://www.semanticweb.org/tam/deathDate
+:deathDate rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Person ;
+           rdfs:range xsd:dateTime ;
+           rdfs:comment "Date of death."@en ;
+           rdfs:label "deathDate"@en .
+
+
+###  http://www.semanticweb.org/tam/departureTime
+:departureTime rdf:type owl:DatatypeProperty ;
+               rdfs:domain :Trip ;
+               rdfs:range xsd:dateTime ;
+               rdfs:comment "The expected departure time."@en ;
+               rdfs:label "departureTime"@en .
+
+###  http://www.semanticweb.org/tam/depth
+:depth rdf:type owl:DatatypeProperty ;
+       rdfs:domain :Product ;
+       rdfs:range xsd:string ;
+       rdfs:comment "The depth of the item."@en ;
+       rdfs:label "depth"@en .
+
+
+###  http://www.semanticweb.org/tam/description
+:description rdf:type owl:DatatypeProperty ;
+             rdfs:domain :TAMThing ;
+             rdfs:range xsd:string ;
+             rdfs:comment "A description for the item"@en ;
+             rdfs:label "description"@en .
+
+
+
+###  http://www.semanticweb.org/tam/dietFeatures
+:dietFeatures rdf:type owl:DatatypeProperty ;
+              rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/tam/discount
+:discount rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Order ;
+          rdfs:range xsd:float ;
+          rdfs:comment "Any discount applied (to an Order)."@en ;
+          rdfs:label "discount"@en .
+
+
+###  http://www.semanticweb.org/tam/discountCurrency
+:discountCurrency rdf:type owl:DatatypeProperty ;
+                  rdfs:domain :Order ;
+                  rdfs:range xsd:string ;
+                  rdfs:comment "The currency (in 3-letter ISO 4217 format) of the discount."@en ;
+                  rdfs:label "discountCurrency"@en .
+
+
+###  http://www.semanticweb.org/tam/dissolutionDate
+:dissolutionDate rdf:type owl:DatatypeProperty ;
+                 rdfs:domain :Organization ;
+                 rdfs:range xsd:dateTime ;
+                 rdfs:comment "The date that this organization was dissolved."@en ;
+                 rdfs:label "dissolutionDate"@en .
+
+
+###  http://www.semanticweb.org/tam/doorTime
+:doorTime rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Event ;
+          rdfs:range xsd:dateTime ,
+                     xsd:time ;
+          rdfs:comment "The time admission will commence."@en ;
+          rdfs:label "doorTime"@en .
+
+
+###  http://www.semanticweb.org/tam/dosageForm
+:dosageForm rdf:type owl:DatatypeProperty ;
+            rdfs:domain :Drug ;
+            rdfs:range xsd:string ;
+            rdfs:comment "A dosage form in which this drug/supplement is available, e.g. 'tablet', 'suspension', 'injection'."@en ;
+            rdfs:label "dosageForm"@en .
+
+
+###  http://www.semanticweb.org/tam/duration
+:duration rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Action ,
+                      :Event ,
+                      :Schedule ;
+          rdfs:range xsd:duration ;
+          rdfs:label "duration"@en .
+
+
+###  http://www.semanticweb.org/tam/elevation
+:elevation rdf:type owl:DatatypeProperty ;
+           rdfs:domain :GeoCoordinates, 
+                        :GeoShape ;
+           rdfs:range xsd:float,
+                        xsd:string ;
+           rdfs:comment "The elevation of a location (WGS 84). Values may be of the form 'NUMBER UNIT_OF_MEASUREMENT' (e.g., '1,000 m', '3,200 ft') while numbers alone should be assumed to be a value in meters. "@en ;
+           rdfs:label "elevation"@en .
+
+
+###  http://www.semanticweb.org/tam/email
+:email rdf:type owl:DatatypeProperty ;
+       rdfs:domain :Organization ,
+                   :Person ;
+       rdfs:range xsd:string ;
+       rdfs:comment "Email address."@en ;
+       rdfs:label "email"@en .
+
+
+###  http://www.semanticweb.org/tam/endDate
+:endDate rdf:type owl:DatatypeProperty ;
+         rdfs:domain :Event ,
+                     :Role ,
+                     :Schedule ;
+         rdfs:range xsd:dateTime ;
+         rdfs:comment "The end date and time of the item (in ISO 8601 date format)."@en ;
+         rdfs:label "endDate"@en .
+
+
+###  http://www.semanticweb.org/tam/endTime
+:endTime rdf:type owl:DatatypeProperty ;
+         rdfs:domain :Action ,
+                     :Event ,
+                     :Schedule ;
+         rdfs:range xsd:dateTime ,
+                    xsd:time ;
+         rdfs:comment "The endTime of something."@en ;
+         rdfs:label "endTime"@en .
+
+
+###  http://www.semanticweb.org/tam/estimatedSalery
+:estimatedSalery rdf:type owl:DatatypeProperty ;
+                 rdfs:domain :Occupation ;
+                 rdfs:range xsd:float ;
+                 rdfs:comment "An estimated salary for a job posting or occupation, based on a variety of variables including, but not limited to industry, job title, and location."@en ;
+                 rdfs:label "estimatedSalery"@en .
+
+
+###  http://www.semanticweb.org/tam/eventPriority
+:eventPriority rdf:type owl:DatatypeProperty ;
+               rdfs:domain :Event ;
+               rdfs:range xsd:integer ;
+               rdfs:comment "The priority of the event."@en ;
+               rdfs:label "eventPriority"@en .
+
+
+###  http://www.semanticweb.org/tam/eventStatus
+:eventStatus rdf:type owl:DatatypeProperty ;
+             rdfs:domain :Event ;
+             rdfs:range xsd:string ;
+             rdfs:comment "An eventStatus of an event represents its status; particularly useful when an event is cancelled or rescheduled."@en ;
+             rdfs:label "eventStatus"@en .
+
+
+###  http://www.semanticweb.org/tam/eventType
+:eventType rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Event ;
+           rdfs:range xsd:string ;
+           rdfs:comment "Type of the event."@en ;
+           rdfs:label "eventType"@en .
+
+
+###  http://www.semanticweb.org/tam/exceptDate
+:exceptDate rdf:type owl:DatatypeProperty ;
+            rdfs:domain :Schedule ;
+            rdfs:range xsd:dateTime ;
+            rdfs:comment "Defines a Date or DateTime during which a scheduled Event will not take place. The property allows exceptions to a Schedule to be specified. "@en ;
+            rdfs:label "exceptDate"@en .
+
+
+###  http://www.semanticweb.org/tam/experienceRequirements
+:experienceRequirements rdf:type owl:DatatypeProperty ;
+                        rdfs:domain :Occupation ;
+                        rdfs:range xsd:string ;
+                        rdfs:comment "Description of skills and experience needed for the position or Occupation."@en ;
+                        rdfs:label "experienceRequirements"@en .
+
+
+###  http://www.semanticweb.org/tam/familyName
+:familyName rdf:type owl:DatatypeProperty ;
+            rdfs:domain :Person ;
+            rdfs:range xsd:string ;
+            rdfs:comment "Family name. In the U.S., the last name of an Person."@en ;
+            rdfs:label "familyName"@en .
+
+
+###  http://www.semanticweb.org/tam/faxNumber
+:faxNumber rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Organization ,
+                       :Person ,
+                       :Place ;
+           rdfs:range xsd:string ;
+           rdfs:comment "The fax number."@en ;
+           rdfs:label "faxNumber"@en .
+
+
+###  http://www.semanticweb.org/tam/foundingDate
+:foundingDate rdf:type owl:DatatypeProperty ;
+              rdfs:domain :Organization ;
+              rdfs:range xsd:dateTime ;
+              rdfs:comment "The date that this organization was founded."@en ;
+              rdfs:label "foundingDate"@en .
+
+
+###  http://www.semanticweb.org/tam/gender
+:gender rdf:type owl:DatatypeProperty ;
+        rdfs:domain :Person ;
+        rdfs:range xsd:string ;
+        rdfs:comment "Gender of the person."@en ;
+        rdfs:label "gender"@en .
+
+
+###  http://www.semanticweb.org/tam/givenName
+:givenName rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Person ;
+           rdfs:range xsd:string ;
+           rdfs:comment "Given name. In the U.S., the first name of a Person."@en ;
+           rdfs:label "givenName"@en .
+
+
+###  http://www.semanticweb.org/tam/hasMap
+:hasMap rdf:type owl:DatatypeProperty ;
+        rdfs:domain :Place ;
+        rdfs:range xsd:anyURI ;
+        rdfs:comment "A URL to a map of the place."@en ;
+        rdfs:label "hasMap"@en .
+
+
+###  http://www.semanticweb.org/tam/height
+:height rdf:type owl:DatatypeProperty ;
+        rdfs:domain :Person ,
+                    :Product ;
+        rdfs:range xsd:string ;
+        rdfs:comment "The height of the item."@en ;
+        rdfs:label "height"@en .
+
+
+###  http://www.semanticweb.org/tam/honorificPrefix
+:honorificPrefix rdf:type owl:DatatypeProperty ;
+                 rdfs:domain :Person ;
+                 rdfs:range xsd:string ;
+                 rdfs:comment "An honorific prefix preceding a Person's name such as Dr/Mrs/Mr."@en ;
+                 rdfs:label "honorificPrefix"@en .
+
+
+###  http://www.semanticweb.org/tam/honorificSuffix
+:honorificSuffix rdf:type owl:DatatypeProperty ;
+                 rdfs:domain :Person ;
+                 rdfs:range xsd:string ;
+                 rdfs:comment "An honorific suffix preceding a Person's name such as M.D. /PhD/MSCSW."@en ;
+                 rdfs:label "honorificSuffix"@en .
+
+
+###  http://www.semanticweb.org/tam/identifier
+:identifier rdf:type owl:DatatypeProperty ;
+            rdfs:domain :TAMThing ;
+            rdfs:range xsd:anyURI ,
+                       xsd:string ;
+            rdfs:comment "The identifier property represents any kind of identifier for any kind of Thing, such as ISBNs, GTIN codes, UUIDs etc."@en ;
+            rdfs:label "identifier"@en .
+
+
+###  http://www.semanticweb.org/tam/image
+:image rdf:type owl:DatatypeProperty ;
+       rdfs:domain :TAMThing ;
+       rdfs:range xsd:anyURI ;
+       rdfs:comment "An image of the item."@en ;
+       rdfs:label "image"@en .
+
+
+###  http://www.semanticweb.org/tam/inLanguage
+:inLanguage rdf:type owl:DatatypeProperty ;
+            rdfs:domain :CreativeWork ,
+                        :Event ;
+            rdfs:range xsd:string ;
+            rdfs:comment "The language of the content or performance or used in an action."@en ;
+            rdfs:label "inLanguage"@en .
+
+
+###  http://www.semanticweb.org/tam/isAccessibleForFree
+:isAccessibleForFree rdf:type owl:DatatypeProperty ;
+                     rdfs:domain :CreativeWork ;
+                     rdfs:range xsd:boolean ;
+                     rdfs:comment "A flag to signal that the item, event, or place is accessible for free."@en ;
+                     rdfs:label "isAccessibleForFree"@en .
+
+
+###  http://www.semanticweb.org/tam/itemListOrder
+:itemListOrder rdf:type owl:DatatypeProperty ;
+               rdfs:domain :ItemList ;
+               rdfs:range xsd:string ;
+               rdfs:comment "Type of ordering (e.g. Ascending, Descending, Unordered)."@en ;
+               rdfs:label "itemListOrder"@en .
+
+
+###  http://www.semanticweb.org/tam/jobTitle
+:jobTitle rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Occupation ;
+          rdfs:range xsd:string ;
+          rdfs:comment "The job title of the person (for example, Financial Manager)."@en ;
+          rdfs:label "jobTitle"@en .
+
+
+###  http://www.semanticweb.org/tam/keywords
+:keywords rdf:type owl:DatatypeProperty ;
+          rdfs:domain :CreativeWork ,
+                      :Event ,
+                      :Organization ,
+                      :Place ,
+                      :Product ;
+          rdfs:range xsd:string ;
+          rdfs:comment "Keywords or tags used to describe this content. Multiple entries in a keywords list are typically delimited by commas."@en ;
+          rdfs:label "keywords"@en .
+
+
+###  http://www.semanticweb.org/tam/knowsLanguage
+:knowsLanguage rdf:type owl:DatatypeProperty ;
+               rdfs:domain :Person ;
+               rdfs:range xsd:string ;
+               rdfs:comment "A language someone may speak or write."@en ;
+               rdfs:label "knowsLanguage"@en .
+
+
+###  http://www.semanticweb.org/tam/latitude
+:latitude rdf:type owl:DatatypeProperty ;
+          rdfs:domain :GeoCoordinates,
+                        :Place ;
+          rdfs:range xsd:float,
+                     xsd:string ;
+          rdfs:comment "The latitude of a location. For example 37.42242."@en ;
+          rdfs:label "latitude"@en .
+
+
+###  http://www.semanticweb.org/tam/legalName
+:legalName rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Organization ;
+           rdfs:range xsd:string ;
+           rdfs:comment "The official name of the organization, e.g. the registered company name."@en ;
+           rdfs:label "legalName"@en .
+
+
+###  http://www.semanticweb.org/tam/leiCode
+:leiCode rdf:type owl:DatatypeProperty ;
+         rdfs:domain :Organization ;
+         rdfs:range xsd:string ;
+         rdfs:comment "An organization identifier that uniquely identifies a legal entity as defined in ISO 17442."@en ;
+         rdfs:label "leiCode"@en .
+
+
+###  http://www.semanticweb.org/tam/line
+:line rdf:type owl:DatatypeProperty ;
+      rdfs:domain :GeoShape ;
+      rdfs:range xsd:string ;
+      rdfs:comment "A line is a point-to-point path consisting of two or more points. A line is expressed as a series of two or more point objects separated by space."@en ;
+      rdfs:label "line"@en .
+
+###  http://www.semanticweb.org/tam/longitude
+:longitude rdf:type owl:DatatypeProperty ;
+           rdfs:domain :GeoCoordinates,
+                        :Place ;
+           rdfs:range xsd:float,
+                      xsd:string ;
+           rdfs:comment "The longitude of a location. For example -122.08585."@en ;
+           rdfs:label "longitude"@en .
+
+
+###  http://www.semanticweb.org/tam/material
+:material rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Product, :CreativeWork ;
+          rdfs:range xsd:string ;
+          rdfs:comment "A material that something is made from, e.g. leather, wool, cotton, paper."@en ;
+          rdfs:label "material"@en .
+
+
+###  http://www.semanticweb.org/tam/maxiumAttendeeCapacity
+:maxiumAttendeeCapacity rdf:type owl:DatatypeProperty ;
+                        rdfs:domain :Event ;
+                        rdfs:range xsd:integer ;
+                        rdfs:comment "The total number of individuals that may attend an event or venue."@en ;
+                        rdfs:label "maxiumAttendeeCapacity"@en .
+
+
+###  http://www.semanticweb.org/tam/modifiedTime
+:modifiedTime rdf:type owl:DatatypeProperty ;
+              rdfs:domain :Reservation ;
+              rdfs:range xsd:dateTime ;
+              rdfs:comment "The date and time the reservation was modified."@en ;
+              rdfs:label "modifiedTime"@en .
+
+
+###  http://www.semanticweb.org/tam/name
+:name rdf:type owl:DatatypeProperty ;
+      rdfs:domain :TAMThing ;
+      rdfs:range xsd:string ;
+      rdfs:comment "The name of the item"@en ;
+      rdfs:label "name"@en .
+
+
+###  http://www.semanticweb.org/tam/nationality
+:nationality rdf:type owl:DatatypeProperty ;
+             rdfs:domain :Person ;
+             rdfs:range xsd:string ;
+             rdfs:comment "Nationality of the person."@en ;
+             rdfs:label "nationality"@en .
+
+
+###  http://www.semanticweb.org/tam/netWorth
+:netWorth rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Person ;
+          rdfs:range xsd:float ;
+          rdfs:comment "The total financial value of the person as calculated by assets - liabilities."@en ;
+          rdfs:label "netWorth"@en .
+
+
+###  http://www.semanticweb.org/tam/numberOfEmployees
+:numberOfEmployees rdf:type owl:DatatypeProperty ;
+                   rdfs:domain :Organization ;
+                   rdfs:range xsd:integer ;
+                   rdfs:comment "The number of employees in an organization e.g. business."@en ;
+                   rdfs:label "numberOfEmployees"@en .
+
+
+###  http://www.semanticweb.org/tam/numberOfItems
+:numberOfItems rdf:type owl:DatatypeProperty ;
+               rdfs:domain :ItemList ;
+               rdfs:range xsd:integer ;
+               rdfs:comment "The number of items in the list."@en ;
+               rdfs:label "numberOfItems"@en .
+
+
+###  http://www.semanticweb.org/tam/observationDate
+:observationDate rdf:type owl:DatatypeProperty ;
+                 rdfs:domain :Observation ;
+                 rdfs:range xsd:dateTime ;
+                 rdfs:comment "The date the observation was made."@en ;
+                 rdfs:label "observationDate"@en .
+
+
+###  http://www.semanticweb.org/tam/occupationalCategory
+:occupationalCategory rdf:type owl:DatatypeProperty ;
+                      rdfs:domain :Occupation ;
+                      rdfs:range xsd:string ;
+                      rdfs:comment "Category or categories describing the job."@en ;
+                      rdfs:label "occupationalCategory"@en .
+
+
+###  http://www.semanticweb.org/tam/orderDate
+:orderDate rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Order ;
+           rdfs:range xsd:dateTime ;
+           rdfs:comment "Date order was placed."@en ;
+           rdfs:label "orderDate"@en .
+
+
+###  http://www.semanticweb.org/tam/orderDelivery
+:orderDelivery rdf:type owl:DatatypeProperty ;
+               rdfs:domain :Order ;
+               rdfs:range xsd:dateTime ;
+               rdfs:comment "The delivery of the parcel related to this order or order item."@en ;
+               rdfs:label "orderDelivery"@en .
+
+
+###  http://www.semanticweb.org/tam/orderNumber
+:orderNumber rdf:type owl:DatatypeProperty ;
+             rdfs:domain :Order ;
+             rdfs:range xsd:string ;
+             rdfs:comment "The identifier of the order."@en ;
+             rdfs:label "orderNumber"@en .
+
+
+###  http://www.semanticweb.org/tam/orderStatus
+:orderStatus rdf:type owl:DatatypeProperty ;
+             rdfs:domain :Order ;
+             rdfs:range xsd:string ;
+             rdfs:comment "The current status of the order."@en ;
+             rdfs:label "orderStatus"@en .
+
+###  http://www.semanticweb.org/tam/openingHours
+:openingHours rdf:type owl:DatatypeProperty ;
+              rdfs:domain :Place ;
+              rdfs:range xsd:string ;
+              rdfs:comment "The general opening hours for a business. Opening hours can be specified as a weekly time range, starting with days, then times per day. Multiple days can be listed with commas ',' separating each day. Day or time ranges are specified using a hyphen '-'. "@en ;
+              rdfs:label "openingHours"@en .
+
+###  http://www.semanticweb.org/tam/photo
+:photo rdf:type owl:DatatypeProperty ;
+       rdfs:domain :Person,
+                   :Place ;
+       rdfs:range xsd:anyURI ;
+       rdfs:comment "A photograph of this person or place."@en ;
+       rdfs:label "photo"@en .
+
+###  http://www.semanticweb.org/tam/physicalActivityLevel
+:physicalActivityLevel rdf:type owl:DatatypeProperty ;
+                       rdfs:domain :Person ;
+                       rdfs:range xsd:string ;
+                       rdfs:comment "Physical activity level."@en ;
+                       rdfs:label "physicalActivityLevel"@en .
+
+
+###  http://www.semanticweb.org/tam/polygon
+:polygon rdf:type owl:DatatypeProperty ;
+         rdfs:domain :GeoShape ;
+         rdfs:range xsd:string ;
+         rdfs:comment "A polygon is the area enclosed by a point-to-point path for which the starting and ending point are the same. A polygon is expressed as a series of four or more space-delimited points where the first and final points are identical."@en ;
+         rdfs:label "polygon"@en .
+
+
+###  http://www.semanticweb.org/tam/position
+:position rdf:type owl:DatatypeProperty ;
+          rdfs:domain :ListItem, 
+                      :CreativeWork ;
+          rdfs:range xsd:integer ,
+                     xsd:string ;
+          rdfs:comment "The position of an item in a series or sequence of items."@en ;
+          rdfs:label "position"@en .
+
+
+###  http://www.semanticweb.org/tam/postalCode
+:postalCode rdf:type owl:DatatypeProperty ;
+            rdfs:domain :GeoCoordinates ,
+                        :GeoShape;
+            rdfs:range xsd:string ;
+            rdfs:comment "The postal code. For example, 94043."@en ;
+            rdfs:label "postalCode"@en .
+
+###  http://www.semanticweb.org/tam/pregnancyWarning
+:pregnancyWarning rdf:type owl:DatatypeProperty ;
+                  rdfs:domain :Drug ;
+                  rdfs:range xsd:string ;
+                  rdfs:comment "Any precaution, guidance, contraindication, etc. related to this drug's use during pregnancy."@en ;
+                  rdfs:label "pregnancyWarning"@en .
+
+###  http://www.semanticweb.org/tam/previousStartDate
+:previousStartDate rdf:type owl:DatatypeProperty ;
+                   rdfs:domain :Event ;
+                   rdfs:range xsd:dateTime ;
+                   rdfs:comment "Used in conjunction with eventStatus for rescheduled or cancelled events. This property contains the previously scheduled start date. For rescheduled events, the start date may be the new date or the old date."@en ;
+                   rdfs:label "previousStartDate"@en .
+
+
+###  http://www.semanticweb.org/tam/priceCurrency
+:priceCurrency rdf:type owl:DatatypeProperty ;
+               rdfs:domain :Reservation ,
+                           :Ticket ;
+               rdfs:range xsd:string ;
+               rdfs:comment "The currency (in 3-letter ISO 4217 format) of the price."@en ;
+               rdfs:label "priceCurrency"@en .
+
+
+###  http://www.semanticweb.org/tam/productID
+:productID rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Product ;
+           rdfs:range xsd:string ;
+           rdfs:comment "The product identifier, such as ISBN. For example: meta itemprop=\"productID\" content=\"isbn:123-456-789\"."@en ;
+           rdfs:label "productID"@en .
+
+###  http://www.semanticweb.org/tam/productionDate
+:productionDate rdf:type owl:DatatypeProperty ;
+                rdfs:domain :Product ;
+                rdfs:range xsd:dateTime ;
+                rdfs:comment "The date of production of the item, e.g. vehicle."@en ;
+                rdfs:label "productionDate"@en .
+
+
+###  http://www.semanticweb.org/tam/publicAccess
+:publicAccess rdf:type owl:DatatypeProperty ;
+              rdfs:domain :Place ;
+              rdfs:range xsd:boolean ;
+              rdfs:comment "A flag to signal that the Place is open to public visitors. If this property is omitted there is no assumed default boolean value"@en ;
+              rdfs:label "publicAccess"@en .
+
+
+###  http://www.semanticweb.org/tam/repeatCount
+:repeatCount rdf:type owl:DatatypeProperty ;
+             rdfs:domain :Schedule ;
+             rdfs:range xsd:integer ;
+             rdfs:comment "Defines the number of times a scheduled Event will take place."@en ;
+             rdfs:label "repeatCount"@en .
+
+
+###  http://www.semanticweb.org/tam/repeatFrequency
+:repeatFrequency rdf:type owl:DatatypeProperty ;
+                 rdfs:domain :Schedule ;
+                 rdfs:range xsd:duration ,
+                            xsd:string ;
+                 rdfs:comment "Defines the frequency at which Events will occur according to a Schedule."@en ;
+                 rdfs:label "repeatFrequency"@en .
+
+
+###  http://www.semanticweb.org/tam/reservationId
+:reservationId rdf:type owl:DatatypeProperty ;
+               rdfs:domain :Reservation ;
+               rdfs:range xsd:string ;
+               rdfs:comment "A unique identifier for the reservation."@en ;
+               rdfs:label "reservationId"@en .
+
+
+###  http://www.semanticweb.org/tam/reservationStatus
+:reservationStatus rdf:type owl:DatatypeProperty ;
+                   rdfs:domain :Reservation ;
+                   rdfs:range xsd:string ;
+                   rdfs:comment "The current status of the reservation."@en ;
+                   rdfs:label "reservationStatus"@en .
+
+
+###  http://www.semanticweb.org/tam/responsibilities
+:responsibilities rdf:type owl:DatatypeProperty ;
+                  rdfs:domain :Occupation ;
+                  rdfs:range xsd:string ;
+                  rdfs:comment "Responsibilities associated with this role or Occupation."@en ;
+                  rdfs:label "responsibilities"@en .
+
+
+###  http://www.semanticweb.org/tam/roleName
+:roleName rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Role ;
+          rdfs:range xsd:string ;
+          rdfs:comment "The name of the role."@en ;
+          rdfs:label "roleName"@en .
+
+
+###  http://www.semanticweb.org/tam/serviceType
+:serviceType rdf:type owl:DatatypeProperty ;
+             rdfs:domain :Service ;
+             rdfs:range xsd:string ;
+             rdfs:comment "The type of service being offered."@en ;
+             rdfs:label "serviceType"@en .
+
+###  http://www.semanticweb.org/tam/size
+:size rdf:type owl:DatatypeProperty ;
+      rdfs:domain :Product ;
+      rdfs:range xsd:string ;
+      rdfs:comment "The size of the item."@en ;
+      rdfs:label "size"@en .
+
+
+###  http://www.semanticweb.org/tam/skills
+:skills rdf:type owl:DatatypeProperty ;
+        rdfs:domain :Occupation ,
+                    :Organization ,
+                    :Person ;
+        rdfs:range xsd:string ;
+        rdfs:comment "Skills required to fulfill this role or in this Occupation."@en ;
+        rdfs:label "skills"@en .
+
+
+###  http://www.semanticweb.org/tam/smokingAllowed
+:smokingAllowed rdf:type owl:DatatypeProperty ;
+               rdfs:domain :Place ;
+               rdfs:range xsd:boolean ;
+               rdfs:comment "Indicates whether it is allowed to smoke in the place, e.g. in the restaurant, hotel or hotel room."@en ;
+               rdfs:label "smokingAllowed"@en .
+
+
+###  http://www.semanticweb.org/tam/smokingStatus
+:smokingStatus rdf:type owl:DatatypeProperty ;
+               rdfs:domain :Person ;
+               rdfs:range xsd:string ;
+               rdfs:comment "Smoking status of the person."@en ;
+               rdfs:label "smokingStatus"@en .
+
+
+###  http://www.semanticweb.org/tam/startDate
+:startDate rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Event ,
+                       :Role ,
+                       :Schedule ;
+           rdfs:range xsd:dateTime ;
+           rdfs:comment "The start date and time of the item (in ISO 8601 date format)."@en ;
+           rdfs:label "startDate"@en .
+
+
+###  http://www.semanticweb.org/tam/startTime
+:startTime rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Action ,
+                       :Schedule ;
+           rdfs:range xsd:dateTime ,
+                      xsd:time ;
+           rdfs:comment "The startTime of something."@en ;
+           rdfs:label "startTime"@en .
+
+
+###  http://www.semanticweb.org/tam/taxID
+:taxID rdf:type owl:DatatypeProperty ;
+       rdfs:domain :Organization ,
+                   :Person ;
+       rdfs:range xsd:string ;
+       rdfs:comment "The Tax / Fiscal ID of the organization or person, e.g. the TIN in the US or the CIF/NIF in Spain."@en ;
+       rdfs:label "taxID"@en .
+
+
+###  http://www.semanticweb.org/tam/telephone
+:telephone rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Organization ,
+                       :Person ,
+                       :Place ;
+           rdfs:range xsd:string ;
+           rdfs:comment "The telephone number."@en ;
+           rdfs:label "telephone"@en .
+
+
+###  http://www.semanticweb.org/tam/text
+:text rdf:type owl:DatatypeProperty ;
+      rdfs:domain :CreativeWork ;
+      rdfs:range xsd:string ;
+      rdfs:comment "The textual content of this CreativeWork."@en ;
+      rdfs:label "text"@en .
+
+
+###  http://www.semanticweb.org/tam/ticketNumber
+:ticketNumber rdf:type owl:DatatypeProperty ;
+              rdfs:domain :Ticket ;
+              rdfs:range xsd:string ;
+              rdfs:comment "The ticket number."@en ;
+              rdfs:label "ticketNumber"@en .
+
+
+###  http://www.semanticweb.org/tam/ticketToken
+:ticketToken rdf:type owl:DatatypeProperty ;
+             rdfs:domain :Ticket ;
+             rdfs:range xsd:anyURI ,
+                        xsd:string ;
+             rdfs:comment "The ticket token."@en ;
+             rdfs:label "ticketToken"@en .
+
+
+###  http://www.semanticweb.org/tam/ticketedSeat
+:ticketedSeat rdf:type owl:DatatypeProperty ;
+              rdfs:domain :Ticket ;
+              rdfs:range xsd:string ;
+              rdfs:comment "The seat associated with the ticket."@en ;
+              rdfs:label "ticketedSeat"@en .
+
+
+###  http://www.semanticweb.org/tam/timeRequired
+:timeRequired rdf:type owl:DatatypeProperty ;
+              rdfs:domain :CreativeWork ;
+              rdfs:range xsd:duration ;
+              rdfs:comment "Approximate or typical time it takes to work with or through this learning resource for the typical intended target audience."@en ;
+              rdfs:label "timeRequired"@en .
+
+
+###  http://www.semanticweb.org/tam/totalPrice
+:totalPrice rdf:type owl:DatatypeProperty ;
+            rdfs:domain :Reservation ,
+                        :Ticket ;
+            rdfs:range xsd:float ;
+            rdfs:comment "The total price for the reservation or ticket."@en ;
+            rdfs:label "totalPrice"@en .
+
+
+###  http://www.semanticweb.org/tam/url
+:url rdf:type owl:DatatypeProperty ;
+     rdfs:domain :TAMThing ;
+     rdfs:range xsd:anyURI ;
+     rdfs:comment "URL of the item"@en ;
+     rdfs:label "url"@en .
+
+
+###  http://www.semanticweb.org/tam/variableMeasured
+:variableMeasured rdf:type owl:DatatypeProperty ;
+                  rdfs:domain :Observation ;
+                  rdfs:range xsd:string ;
+                  rdfs:comment "The variable measured in the observation."@en ;
+                  rdfs:label "variableMeasured"@en .
+
+
+###  http://www.semanticweb.org/tam/version
+:version rdf:type owl:DatatypeProperty ;
+         rdfs:domain :CreativeWork ;
+         rdfs:range xsd:integer ,
+                    xsd:string ;
+         rdfs:comment "The version of the CreativeWork"@en ;
+         rdfs:label "version"@en .
+
+
+###  http://www.semanticweb.org/tam/weight
+:weight rdf:type owl:DatatypeProperty ;
+        rdfs:domain :Person ,
+                    :Product ;
+        rdfs:range xsd:string ;
+        rdfs:comment "The weight of the item."@en ;
+        rdfs:label "weight"@en .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/tam/GeoCoordinates
+:GeoCoordinates rdf:type owl:Class ;
+                rdfs:subClassOf :Intangible ;
+                rdfs:comment "The geographic coordinates of a place or event."@en ;
+                rdfs:label "GeoCoordinates"@en ;
+                owl:equivalentClass "https://schema.org/GeoCoordinates" .
+
+
+###  http://www.semanticweb.org/tam/GeoShape
+:GeoShape rdf:type owl:Class ;
+          rdfs:subClassOf :Intangible ;
+          rdfs:comment "The geographic shape of a place. A GeoShape can be described using several properties whose values are based on latitude/longitude pairs. Either whitespace or commas can be used to separate latitude and longitude; whitespace should be used when writing a list of several such points."@en ;
+          rdfs:label "GeoShape"@en ;
+          owl:equivalentClass "https://schema.org/GeoShape"@en .
+
+
+###  http://www.semanticweb.org/tam/Action
+:Action rdf:type owl:Class ;
+        rdfs:subClassOf :TAMThing ;
+        rdfs:comment "An action performed by a direct agent and indirect participants upon a direct object. Optionally happens at a location with the help of an inanimate instrument. The execution of the action may produce a result."@en ;
+        rdfs:label "Action"@en ;
+        owl:equivalentClass "https://schema.org/Action" .
+
+
+###  http://www.semanticweb.org/tam/CreativeWork
+:CreativeWork rdf:type owl:Class ;
+              rdfs:subClassOf :TAMThing ;
+              rdfs:label "CreativeWork"@en ;
+              owl:incompatibleWith "https://schema.org/CreativeWork" .
+
+
+###  http://www.semanticweb.org/tam/Diet
+:Diet rdf:type owl:Class ;
+      rdfs:subClassOf :CreativeWork ;
+      rdfs:comment "A strategy of regulating the intake of food to achieve or maintain a specific health-related goal."@en ;
+      rdfs:label "Diet"@en ;
+      owl:equivalentClass "https://schema.org/Diet" .
+
+
+###  http://www.semanticweb.org/tam/Drug
+:Drug rdf:type owl:Class ;
+      rdfs:subClassOf :Product ;
+      rdfs:comment "A chemical or biologic substance, used as a medical therapy, that has a physiological effect on an organism. Here the term drug is used interchangeably with the term medicine although clinical knowledge makes a clear difference between them."@en ;
+      rdfs:label "Drug"@en ;
+      owl:equivalentClass "https://schema.org/Drug" .
+
+
+###  http://www.semanticweb.org/tam/Event
+:Event rdf:type owl:Class ;
+       rdfs:subClassOf :TAMThing ;
+       rdfs:label "Event"@en ;
+       owl:equivalentClass "https://schema.org/Event" .
+
+
+###  http://www.semanticweb.org/tam/Home
+:Home rdf:type owl:Class ;
+      rdfs:subClassOf :Place ;
+      rdfs:label "Home"@en .
+
+
+###  http://www.semanticweb.org/tam/Intangible
+:Intangible rdf:type owl:Class ;
+            rdfs:subClassOf :TAMThing ;
+            rdfs:comment "A utility class that serves as the umbrella for a number of 'intangible' things such as quantities, structured values, etc."@en ;
+            rdfs:label "Intangible"@en ;
+            owl:incompatibleWith "https://schema.org/Intangible" .
+
+
+###  http://www.semanticweb.org/tam/ItemList
+:ItemList rdf:type owl:Class ;
+          rdfs:subClassOf :Intangible ;
+          rdfs:comment "A list of items of any sort—for example, Top 10 Movies About Weathermen, or Top 100 Party Songs. Not to be confused with HTML lists, which are often used only for formatting."@en ;
+          rdfs:label "ItemList"@en ;
+          owl:equivalentClass "https://schema.org/ItemList" .
+
+
+###  http://www.semanticweb.org/tam/ListItem
+:ListItem rdf:type owl:Class ;
+          rdfs:subClassOf :Intangible ;
+          rdfs:comment "An list item, e.g. a step in a checklist or how-to description."@en ;
+          rdfs:label "ListItem"@en ;
+          owl:equivalentClass "https://schema.org/ListItem" .
+
+
+###  http://www.semanticweb.org/tam/Message
+:Message rdf:type owl:Class ;
+         rdfs:subClassOf :CreativeWork ;
+         rdfs:comment "A single message from a sender to one or more organizations or people."@en ;
+         rdfs:label "Message"@en ;
+         owl:equivalentClass "https://schema.org/Message" .
+
+
+###  http://www.semanticweb.org/tam/Observation
+:Observation rdf:type owl:Class ;
+             rdfs:subClassOf :Intangible ;
+             rdfs:label "Observation"@en ;
+             owl:equivalentClass "https://schema.org/Observation" .
+
+
+###  http://www.semanticweb.org/tam/Occupation
+:Occupation rdf:type owl:Class ;
+            rdfs:subClassOf :Intangible ;
+            rdfs:label "Occupation"@en ;
+            owl:equivalentClass "https://schema.org/Occupation" .
+
+
+###  http://www.semanticweb.org/tam/Order
+:Order rdf:type owl:Class ;
+       rdfs:subClassOf :Intangible ;
+       rdfs:label "Order"@en ;
+       owl:equivalentClass "https://schema.org/Order" .
+
+
+###  http://www.semanticweb.org/tam/Organization
+:Organization rdf:type owl:Class ;
+              rdfs:subClassOf :TAMThing ;
+              rdfs:label "Organization"@en ;
+              owl:equivalentClass "https://schema.org/Organization" .
+
+
+###  http://www.semanticweb.org/tam/Person
+:Person rdf:type owl:Class ;
+        rdfs:subClassOf :TAMThing ;
+        rdfs:label "Person"@en ;
+        owl:equivalentClass "https://schema.org/Person" .
+
+
+###  http://www.semanticweb.org/tam/Place
+:Place rdf:type owl:Class ;
+       rdfs:subClassOf :TAMThing ;
+       rdfs:comment "Entities that have a somewhat fixed, physical extension."@en ;
+       rdfs:label "Place"@en ;
+       owl:equivalentClass "https://schema.org/Place" .
+
+
+###  http://www.semanticweb.org/tam/Product
+:Product rdf:type owl:Class ;
+         rdfs:subClassOf :TAMThing ;
+         rdfs:label "Product"@en ;
+         owl:equivalentClass "https://schema.org/Product" .
+
+
+###  http://www.semanticweb.org/tam/RecreationPlace
+:RecreationPlace rdf:type owl:Class ;
+                 rdfs:subClassOf :Place ;
+                 rdfs:label "RecreationPlace"@en .
+
+
+###  http://www.semanticweb.org/tam/Reservation
+:Reservation rdf:type owl:Class ;
+             rdfs:subClassOf :Intangible ;
+             rdfs:comment "Describes a reservation for travel, dining or an event. Some reservations require tickets."@en ;
+             rdfs:label "Reservation"@en .
+
+
+###  http://www.semanticweb.org/tam/Role
+:Role rdf:type owl:Class ;
+      rdfs:subClassOf :Intangible ;
+      rdfs:comment "Represents additional information about a relationship or property. For example a Role can be used to say that a 'member' role linking some SportsTeam to a player occurred during a particular time period. Or that a Person's 'actor' role in a Movie was for some particular characterName. Such properties can be attached to a Role entity, which is then associated with the main entities using ordinary properties like 'member' or 'actor'."@en ;
+      rdfs:label "Role"@en ;
+      owl:equivalentClass "https://schema.org/Role" .
+
+
+###  http://www.semanticweb.org/tam/Schedule
+:Schedule rdf:type owl:Class ;
+          rdfs:subClassOf :Intangible ;
+          rdfs:comment "A schedule defines a repeating time period used to describe a regularly occurring Event. At a minimum a schedule will specify repeatFrequency which describes the interval between occurrences of the event. Additional information can be provided to specify the schedule more precisely. This includes identifying the day(s) of the week or month when the recurring event will take place, in addition to its start and end time. Schedules may also have start and end dates to indicate when they are active, e.g. to define a limited calendar of events."@en ;
+          rdfs:label "Schedule"@en ;
+          owl:equivalentClass "https://schema.org/Schedule" .
+
+
+###  http://www.semanticweb.org/tam/Service
+:Service rdf:type owl:Class ;
+         rdfs:subClassOf :Intangible ;
+         rdfs:comment "A service provided by an organization, e.g. delivery service, print services, etc."@en ;
+         rdfs:label "Service"@en ;
+         owl:equivalentClass "https://schema.org/Service" .
+
+
+###  http://www.semanticweb.org/tam/TAMThing
+:TAMThing rdf:type owl:Class ;
+          owl:equivalentClass schema:Thing ;
+          rdfs:comment "The most generic type of item in TAM ontology"@en ;
+          rdfs:label "TAMThing"@en .
+
+
+###  http://www.semanticweb.org/tam/Ticket
+:Ticket rdf:type owl:Class ;
+        rdfs:subClassOf :Intangible ;
+        rdfs:comment "Used to describe a ticket to an event, a flight, a bus ride, etc."@en ;
+        rdfs:label "Ticket"@en ;
+        owl:equivalentClass "https://schema.org/Ticket" .
+
+
+###  http://www.semanticweb.org/tam/Trip
+:Trip rdf:type owl:Class ;
+      rdfs:subClassOf :Intangible ;
+      rdfs:comment "A trip or journey. An itinerary of visits to one or more places."@en ;
+      rdfs:label "Trip"@en ;
+      owl:equivalentClass "https://schema.org/Trip" .
+
+
+###  http://www.semanticweb.org/tam/User
+:User rdf:type owl:Class ;
+      rdfs:subClassOf :Person ;
+      rdfs:label "User"@en .
+
+
+###  http://www.semanticweb.org/tam/Workplace
+:Workplace rdf:type owl:Class ;
+           rdfs:subClassOf :Place ;
+           rdfs:label "Workplace"@en .
+
+
+###  https://schema.org/Thing
+schema:Thing rdf:type owl:Class .
+
+
+#################################################################
+#    Annotations
+#################################################################
+
+:dietFeatures rdfs:comment "Nutritional information specific to the dietary plan."@en ;
+              rdfs:label "dietFeatures"@en .
+
+
+###  Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi
