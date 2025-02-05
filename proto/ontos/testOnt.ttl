@@ -1,0 +1,194 @@
+@prefix : <http://example.org/event-ontology#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://example.org/event-ontology#> .
+
+<http://example.org/event-ontology#EventOntology> rdf:type owl:Ontology ;
+                                                   rdfs:comment "An ontology to describe events, activities, locations, times, participants, animals, objects, and related properties." ;
+                                                   rdfs:label "Event and Activity Ontology" .
+
+#################################################################
+#    Datatypes
+#################################################################
+
+###  http://www.w3.org/2001/XMLSchema#date
+xsd:date rdf:type rdfs:Datatype .
+
+
+###  http://www.w3.org/2001/XMLSchema#time
+xsd:time rdf:type rdfs:Datatype .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://example.org/event-ontology#hasEndTime
+:hasEndTime rdf:type owl:ObjectProperty ;
+            rdfs:domain :Event ;
+            rdfs:range :Time ;
+            rdfs:comment "Indicates the end time of an event or activity." ;
+            rdfs:label "has end time" .
+
+
+###  http://example.org/event-ontology#hasParticipant
+:hasParticipant rdf:type owl:ObjectProperty ;
+                rdfs:domain :Event ;
+                rdfs:range :Person ;
+                rdfs:comment "Indicates a person participating in an event or activity." ;
+                rdfs:label "has participant" .
+
+
+###  http://example.org/event-ontology#hasStartTime
+:hasStartTime rdf:type owl:ObjectProperty ;
+              rdfs:domain :Event ;
+              rdfs:range :Time ;
+              rdfs:comment "Indicates the start time of an event or activity." ;
+              rdfs:label "has start time" .
+
+
+###  http://example.org/event-ontology#involvesAnimal
+:involvesAnimal rdf:type owl:ObjectProperty ;
+                rdfs:domain :Event ;
+                rdfs:range :Animal ;
+                rdfs:comment "Links an event or activity to an animal involved in it." ;
+                rdfs:label "involves animal" .
+
+
+###  http://example.org/event-ontology#isPlannedFor
+:isPlannedFor rdf:type owl:ObjectProperty ;
+              rdfs:domain :PlannedActivity ;
+              rdfs:range :Time ;
+              rdfs:comment "Links a planned activity to a future time." ;
+              rdfs:label "is planned for" .
+
+
+###  http://example.org/event-ontology#isSubEventOf
+:isSubEventOf rdf:type owl:ObjectProperty ;
+              rdfs:domain :Event ;
+              rdfs:range :Event ;
+              rdfs:comment "Indicates that an event is part of another event." ;
+              rdfs:label "is sub-event of" .
+
+
+###  http://example.org/event-ontology#occursAt
+:occursAt rdf:type owl:ObjectProperty ;
+          rdfs:domain :Event ;
+          rdfs:range :Location ;
+          rdfs:comment "Links an event or activity to a location." ;
+          rdfs:label "occurs at" .
+
+
+###  http://example.org/event-ontology#usesObject
+:usesObject rdf:type owl:ObjectProperty ;
+            rdfs:domain :Event ;
+            rdfs:range :Object ;
+            rdfs:comment "Indicates an object used in an event or activity." ;
+            rdfs:label "uses object" .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://example.org/event-ontology#hasAge
+:hasAge rdf:type owl:DatatypeProperty ;
+        rdfs:domain :Person ;
+        rdfs:range xsd:integer ;
+        rdfs:comment "The age of a person or animal." ;
+        rdfs:label "has age" .
+
+
+###  http://example.org/event-ontology#hasDate
+:hasDate rdf:type owl:DatatypeProperty ;
+         rdfs:domain :Time ;
+         rdfs:range xsd:date ;
+         rdfs:comment "The date when an event or activity occurs." ;
+         rdfs:label "has date" .
+
+
+###  http://example.org/event-ontology#hasDescription
+:hasDescription rdf:type owl:DatatypeProperty ;
+                rdfs:domain :Activity ,
+                            :Event ,
+                            :Location ,
+                            :Time ;
+                rdfs:range xsd:string ;
+                rdfs:comment "A textual description of an entity." ;
+                rdfs:label "has description" .
+
+
+###  http://example.org/event-ontology#hasName
+:hasName rdf:type owl:DatatypeProperty ;
+         rdfs:domain :Animal ,
+                     :Person ;
+         rdfs:range xsd:string ;
+         rdfs:comment "The name of an entity." ;
+         rdfs:label "has name" .
+
+
+###  http://example.org/event-ontology#hasTime
+:hasTime rdf:type owl:DatatypeProperty ;
+         rdfs:domain :Time ;
+         rdfs:range xsd:time ;
+         rdfs:comment "The specific time of an event or activity." ;
+         rdfs:label "has time" .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://example.org/event-ontology#Activity
+:Activity rdf:type owl:Class ;
+          rdfs:comment "A task or action performed as part of an event or independently." ;
+          rdfs:label "Activity" .
+
+
+###  http://example.org/event-ontology#Animal
+:Animal rdf:type owl:Class ;
+        rdfs:comment "A non-human living being that may be involved in an event or activity." ;
+        rdfs:label "Animal" .
+
+
+###  http://example.org/event-ontology#Event
+:Event rdf:type owl:Class ;
+       rdfs:comment "A specific occurrence that happens at a given time and place." ;
+       rdfs:label "Event" .
+
+
+###  http://example.org/event-ontology#Location
+:Location rdf:type owl:Class ;
+          rdfs:comment "A physical or virtual place where an event or activity takes place." ;
+          rdfs:label "Location" .
+
+
+###  http://example.org/event-ontology#Object
+:Object rdf:type owl:Class ;
+        rdfs:comment "A tangible or intangible thing that may be used in an event or activity." ;
+        rdfs:label "Object" .
+
+
+###  http://example.org/event-ontology#Person
+:Person rdf:type owl:Class ;
+        rdfs:comment "An individual who participates in events or activities." ;
+        rdfs:label "Person" .
+
+
+###  http://example.org/event-ontology#PlannedActivity
+:PlannedActivity rdf:type owl:Class ;
+                 rdfs:subClassOf :Activity ;
+                 rdfs:comment "An activity that is scheduled to take place in the future." ;
+                 rdfs:label "Planned Activity" .
+
+
+###  http://example.org/event-ontology#Time
+:Time rdf:type owl:Class ;
+      rdfs:comment "A specific time reference associated with an event or activity." ;
+      rdfs:label "Time" .
+
+
+###  Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi

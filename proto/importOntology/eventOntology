@@ -1,0 +1,189 @@
+Prefix(:=<http://example.org/event-ontology#>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(<http://example.org/event-ontology#EventOntology>
+Annotation(rdfs:comment "An ontology to describe events, activities, locations, times, participants, animals, objects, and related properties.")
+Annotation(rdfs:label "Event and Activity Ontology")
+
+Declaration(Class(:Activity))
+Declaration(Class(:Animal))
+Declaration(Class(:Event))
+Declaration(Class(:Location))
+Declaration(Class(:Object))
+Declaration(Class(:Person))
+Declaration(Class(:PlannedActivity))
+Declaration(Class(:Time))
+Declaration(ObjectProperty(:hasEndTime))
+Declaration(ObjectProperty(:hasParticipant))
+Declaration(ObjectProperty(:hasStartTime))
+Declaration(ObjectProperty(:involvesAnimal))
+Declaration(ObjectProperty(:isPlannedFor))
+Declaration(ObjectProperty(:isSubEventOf))
+Declaration(ObjectProperty(:occursAt))
+Declaration(ObjectProperty(:usesObject))
+Declaration(DataProperty(:hasAge))
+Declaration(DataProperty(:hasDate))
+Declaration(DataProperty(:hasDescription))
+Declaration(DataProperty(:hasName))
+Declaration(DataProperty(:hasTime))
+Declaration(Datatype(xsd:date))
+Declaration(Datatype(xsd:time))
+
+############################
+#   Object Properties
+############################
+
+# Object Property: :hasEndTime (has end time)
+
+AnnotationAssertion(rdfs:comment :hasEndTime "Indicates the end time of an event or activity.")
+AnnotationAssertion(rdfs:label :hasEndTime "has end time")
+ObjectPropertyDomain(:hasEndTime :Event)
+ObjectPropertyRange(:hasEndTime :Time)
+
+# Object Property: :hasParticipant (has participant)
+
+AnnotationAssertion(rdfs:comment :hasParticipant "Indicates a person participating in an event or activity.")
+AnnotationAssertion(rdfs:label :hasParticipant "has participant")
+ObjectPropertyDomain(:hasParticipant :Event)
+ObjectPropertyRange(:hasParticipant :Person)
+
+# Object Property: :hasStartTime (has start time)
+
+AnnotationAssertion(rdfs:comment :hasStartTime "Indicates the start time of an event or activity.")
+AnnotationAssertion(rdfs:label :hasStartTime "has start time")
+ObjectPropertyDomain(:hasStartTime :Event)
+ObjectPropertyRange(:hasStartTime :Time)
+
+# Object Property: :involvesAnimal (involves animal)
+
+AnnotationAssertion(rdfs:comment :involvesAnimal "Links an event or activity to an animal involved in it.")
+AnnotationAssertion(rdfs:label :involvesAnimal "involves animal")
+ObjectPropertyDomain(:involvesAnimal :Event)
+ObjectPropertyRange(:involvesAnimal :Animal)
+
+# Object Property: :isPlannedFor (is planned for)
+
+AnnotationAssertion(rdfs:comment :isPlannedFor "Links a planned activity to a future time.")
+AnnotationAssertion(rdfs:label :isPlannedFor "is planned for")
+ObjectPropertyDomain(:isPlannedFor :PlannedActivity)
+ObjectPropertyRange(:isPlannedFor :Time)
+
+# Object Property: :isSubEventOf (is sub-event of)
+
+AnnotationAssertion(rdfs:comment :isSubEventOf "Indicates that an event is part of another event.")
+AnnotationAssertion(rdfs:label :isSubEventOf "is sub-event of")
+ObjectPropertyDomain(:isSubEventOf :Event)
+ObjectPropertyRange(:isSubEventOf :Event)
+
+# Object Property: :occursAt (occurs at)
+
+AnnotationAssertion(rdfs:comment :occursAt "Links an event or activity to a location.")
+AnnotationAssertion(rdfs:label :occursAt "occurs at")
+ObjectPropertyDomain(:occursAt :Event)
+ObjectPropertyRange(:occursAt :Location)
+
+# Object Property: :usesObject (uses object)
+
+AnnotationAssertion(rdfs:comment :usesObject "Indicates an object used in an event or activity.")
+AnnotationAssertion(rdfs:label :usesObject "uses object")
+ObjectPropertyDomain(:usesObject :Event)
+ObjectPropertyRange(:usesObject :Object)
+
+
+############################
+#   Data Properties
+############################
+
+# Data Property: :hasAge (has age)
+
+AnnotationAssertion(rdfs:comment :hasAge "The age of a person or animal.")
+AnnotationAssertion(rdfs:label :hasAge "has age")
+DataPropertyDomain(:hasAge :Person)
+DataPropertyRange(:hasAge xsd:integer)
+
+# Data Property: :hasDate (has date)
+
+AnnotationAssertion(rdfs:comment :hasDate "The date when an event or activity occurs.")
+AnnotationAssertion(rdfs:label :hasDate "has date")
+DataPropertyDomain(:hasDate :Time)
+DataPropertyRange(:hasDate xsd:date)
+
+# Data Property: :hasDescription (has description)
+
+AnnotationAssertion(rdfs:comment :hasDescription "A textual description of an entity.")
+AnnotationAssertion(rdfs:label :hasDescription "has description")
+DataPropertyDomain(:hasDescription :Activity)
+DataPropertyDomain(:hasDescription :Event)
+DataPropertyDomain(:hasDescription :Location)
+DataPropertyDomain(:hasDescription :Time)
+DataPropertyRange(:hasDescription xsd:string)
+
+# Data Property: :hasName (has name)
+
+AnnotationAssertion(rdfs:comment :hasName "The name of an entity.")
+AnnotationAssertion(rdfs:label :hasName "has name")
+DataPropertyDomain(:hasName :Animal)
+DataPropertyDomain(:hasName :Person)
+DataPropertyRange(:hasName xsd:string)
+
+# Data Property: :hasTime (has time)
+
+AnnotationAssertion(rdfs:comment :hasTime "The specific time of an event or activity.")
+AnnotationAssertion(rdfs:label :hasTime "has time")
+DataPropertyDomain(:hasTime :Time)
+DataPropertyRange(:hasTime xsd:time)
+
+
+
+############################
+#   Classes
+############################
+
+# Class: :Activity (Activity)
+
+AnnotationAssertion(rdfs:comment :Activity "A task or action performed as part of an event or independently.")
+AnnotationAssertion(rdfs:label :Activity "Activity")
+
+# Class: :Animal (Animal)
+
+AnnotationAssertion(rdfs:comment :Animal "A non-human living being that may be involved in an event or activity.")
+AnnotationAssertion(rdfs:label :Animal "Animal")
+
+# Class: :Event (Event)
+
+AnnotationAssertion(rdfs:comment :Event "A specific occurrence that happens at a given time and place.")
+AnnotationAssertion(rdfs:label :Event "Event")
+
+# Class: :Location (Location)
+
+AnnotationAssertion(rdfs:comment :Location "A physical or virtual place where an event or activity takes place.")
+AnnotationAssertion(rdfs:label :Location "Location")
+
+# Class: :Object (Object)
+
+AnnotationAssertion(rdfs:comment :Object "A tangible or intangible thing that may be used in an event or activity.")
+AnnotationAssertion(rdfs:label :Object "Object")
+
+# Class: :Person (Person)
+
+AnnotationAssertion(rdfs:comment :Person "An individual who participates in events or activities.")
+AnnotationAssertion(rdfs:label :Person "Person")
+
+# Class: :PlannedActivity (Planned Activity)
+
+AnnotationAssertion(rdfs:comment :PlannedActivity "An activity that is scheduled to take place in the future.")
+AnnotationAssertion(rdfs:label :PlannedActivity "Planned Activity")
+SubClassOf(:PlannedActivity :Activity)
+
+# Class: :Time (Time)
+
+AnnotationAssertion(rdfs:comment :Time "A specific time reference associated with an event or activity.")
+AnnotationAssertion(rdfs:label :Time "Time")
+
+
+)
