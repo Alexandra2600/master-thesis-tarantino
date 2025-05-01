@@ -1,0 +1,6 @@
+2025-03-24 18:10:14,Ella,"{'non_llm_context_precision_with_reference': 0.7417, 'non_llm_context_recall': 0.8298, 'answer_relevancy': 0.9426, 'faithfulness': 0.9633, 'factual_correctness(mode=f1)': 0.5420}", con 3 nodi
+2025-03-25 09:38:01,Ella,"{'non_llm_context_precision_with_reference': 0.8000, 'non_llm_context_recall': 0.8548, 'answer_relevancy': 0.9528, 'faithfulness': 0.9800, 'factual_correctness(mode=f1)': 0.4620}", con 4 nodi
+2025-03-25 10:05:22,Ella,"{'non_llm_context_precision_with_reference': 0.7417, 'non_llm_context_recall': 0.9048, 'answer_relevancy': 0.9442, 'faithfulness': 0.9800, 'factual_correctness(mode=f1)': 0.4620}", con 3 nodi e domande corrette
+2025-03-25 10:19:56,Ella,"{'non_llm_context_precision_with_reference': 1.0000, 'non_llm_context_recall': 0.8357, 'answer_relevancy': 0.9425, 'faithfulness': 1.0000, 'semantic_similarity': 0.7715}", con 2 nodi
+2025-03-25 10:33:12,Ella,"{'non_llm_context_precision_with_reference': 0.7417, 'non_llm_context_recall': 0.9048, 'answer_relevancy': 0.9440, 'faithfulness': 0.9633, 'semantic_similarity': 0.8310}", con 3 nodi
+2025-03-25 11:59:40,Javier,"{'non_llm_context_precision_with_reference': 0.6833, 'non_llm_context_recall': 0.7333, 'answer_relevancy': 0.9391, 'faithfulness': 0.8667, 'semantic_similarity': 0.6757}"

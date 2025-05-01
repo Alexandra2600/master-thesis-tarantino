@@ -1,0 +1,90 @@
+[
+    {
+      "question": "What is the deadline for launching my online platform for African fabrics?",
+      "answer": "The due date is 2024-03-01.",
+      "context": [
+        "I (Benjamin) want to start a new project: launching an online platform for African fabrics. Due date: 2024-03-01. Priority: High."
+      ]
+    },
+    {
+      "question": "What time and where is my appointment with Dr. Smith?",
+      "answer": "Your appointment with Dr. Smith is on 2023-10-10 at 10:00 AM at Atlanta Medical Center.",
+      "context": [
+        "I (Benjamin) have an appointment with Dr. Smith on 2023-10-10 at 10:00 AM at Atlanta Medical Center."
+      ]
+    },
+    {
+      "question": "What activities are scheduled for 2023-10-10?",
+      "answer": "On 2023-10-10, you have a doctor's appointment at 10:00 AM at Atlanta Medical Center and a meeting with a web developer at 2:00 PM.",
+      "context": [
+        "I (Benjamin) have an appointment with Dr. Smith on 2023-10-10 at 10:00 AM at Atlanta Medical Center.",
+        "I (Benjamin) have a doctor's appointment on 2023-10-10 at 10:00 AM, and later I (Benjamin) will meet with a web developer on 2023-10-10 at 2:00 PM."
+      ]
+    },
+    {
+      "question": "What current projects am I working on?",
+      "answer": "You are working on launching an online platform for African fabrics.",
+      "context": [
+        "I (Benjamin) want to start a new project: launching an online platform for African fabrics. Due date: 2024-03-01. Priority: High."
+      ]
+    },
+    {
+      "question": "What events are taking place in Atlanta?",
+      "answer": "In Atlanta, you have an appointment with Dr. Smith on 2023-10-10 at Atlanta Medical Center, a meeting with a fabric supplier at your store on 2023-10-15 at 3:00 PM, and visits to the African Cultural Center on 2023-10-12 and 2023-10-23.",
+      "context": [
+        "I (Benjamin) have an appointment with Dr. Smith on 2023-10-10 at 10:00 AM at Atlanta Medical Center.",
+        "On 2023-10-15 at 3:00 PM, I (Benjamin) will meet with a fabric supplier at my store in Atlanta.",
+        "2023-10-12, I (Benjamin) will visit the African Cultural Center in Atlanta to gather more stories for the platform.",
+        "On 2023-10-23, I (Benjamin) will visit the African Cultural Center again to verify some details."
+      ]
+    },
+    {
+      "question": "What activities do I have with my daughter Grace?",
+      "answer": "You will call your daughter Grace on 2023-10-09 to help organize fabric samples and on 2023-10-24 to assist with fabric descriptions.",
+      "context": [
+        "On 2023-10-09, I (Benjamin) will call my daughter Grace to help me organize the fabric samples.",
+        "On 2023-10-24, I (Benjamin) will call my daughter Grace to help me with the fabric descriptions."
+      ]
+    },
+    {
+      "question": "What routine activity do I perform every Monday?",
+      "answer": "Every Monday, you review your progress on the online platform project.",
+      "context": [
+        "Every Monday, I (Benjamin) will review my progress on the online platform project."
+      ]
+    },
+    {
+      "question": "What activities are associated with my online platform for African fabrics?",
+      "answer": "They include researching web developers on 2023-10-02, meeting with your son David to discuss the budget on 2023-10-04, drafting a list of fabric patterns and their cultural significance, taking photos of fabrics on 2023-10-14, writing a blog post about the history of Ankara prints, reviewing the draft website design with the developer on 2023-10-18, finalizing the list of fabrics and their stories by 2023-10-20, starting the 'About Us' page content, reviewing the website's progress on 2023-10-28, writing a social media post about the upcoming platform launch on 2023-10-29, and finalizing the website design by 2023-11-05.",
+      "context": [
+        "I (Benjamin) want to start a new project: launching an online platform for African fabrics. Due date: 2024-03-01. Priority: High.",
+        "On 2023-10-02, I (Benjamin) need to research web developers who specialize in e-commerce platforms.",
+        "2023-10-04, I (Benjamin) will meet with my son David to discuss the budget for the online platform.",
+        "I (Benjamin) will draft a list of fabric patterns and their cultural significance for the online platform.",
+        "On 2023-10-14, I (Benjamin) will take photos of the fabrics for the online platform.",
+        "I (Benjamin) will write a blog post about the history of Ankara prints for the platform.",
+        "On 2023-10-18, I (Benjamin) will review the draft website design with the developer.",
+        "I (Benjamin) need to finalize the list of fabrics and their stories by 2023-10-20.",
+        "I (Benjamin) will start drafting the content for the 'About Us' page of the platform.",
+        "On 2023-10-28, I (Benjamin) will review the website's progress with the developer.",
+        "On 2023-10-29, I (Benjamin) will write a social media post about the upcoming platform launch.",
+        "I (Benjamin) will finalize the website design by 2023-11-05."
+      ]
+    },
+    {
+      "question": "What events do I have with my wife?",
+      "answer": "You have a meeting with your wife on 2023-10-18 at 6:00 PM to discuss the launch event and another meeting on 2023-11-01 at 7:00 PM to finalize the launch event details.",
+      "context": [
+        "I (Benjamin) will meet with my wife on 2023-10-18 at 6:00 PM to discuss the launch event.",
+        "I (Benjamin) have a meeting with my wife on 2023-10-18 at 6:00 PM to discuss the launch event.",
+        "I (Benjamin) will meet with my wife on 2023-11-01 at 7:00 PM to finalize the launch event details."
+      ]
+    },
+    {
+      "question": "What event is scheduled on 2023-10-28?",
+      "answer": "On 2023-10-28, you will review the website's progress with the developer.",
+      "context": [
+        "On 2023-10-28, I (Benjamin) will review the website's progress with the developer."
+      ]
+    }
+  ]

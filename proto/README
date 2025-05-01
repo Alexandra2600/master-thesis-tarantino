@@ -1,0 +1,6 @@
+1. Inserire nelle variabili d'ambiente la chiave per l'API di OpenAI e i dati di connessione al database Neo4j:
+- NEO4J_URI
+- NEO4J_USERNAME
+- NEO4J_PASSWORD
+- OPENAI_API_KEY
+

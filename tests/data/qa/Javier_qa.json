@@ -1,0 +1,93 @@
+[
+    {
+      "question": "What is the deadline for my 'Community Mural: Phoenix History' project?",
+      "answer": "The project is due on 2023-12-15.",
+      "context": [
+        "I (Javier) want to start a new project called 'Community Mural: Phoenix History'. The due date is 2023-12-15, and it's high priority. I (Javier) want to depict the cultural history of Phoenix with other artists."
+      ]
+    },
+    {
+      "question": "What time and where is my appointment with Maria Gonzalez to discuss the mural project?",
+      "answer": "Your appointment is on 2023-10-06 at 10:00 AM at the local community center.",
+      "context": [
+        "I (Javier) have an appointment on 2023-10-06 at 10:00 AM at the local community center with Maria Gonzalez to discuss the mural project.",
+        "Met with Maria Gonzalez at the community center on 2023-10-06. We discussed the theme and logistics for the mural project."
+      ]
+    },
+    {
+      "question": "What activities are scheduled for 2023-10-08?",
+      "answer": "On 2023-10-08, you need to buy art supplies for the mural project and research historical events in Phoenix.",
+      "context": [
+        "I need to buy art supplies for the mural project on 2023-10-08.",
+        "On 2023-10-08, I (Javier) will research historical events in Phoenix to include in the mural."
+      ]
+    },
+    {
+      "question": "What activities do I have planned for tomorrow? (Assuming tomorrow is Monday)",
+      "answer": "Tomorrow, you have your routine two-hour painting session with your daughters San and Milly.",
+      "context": [
+        "Every Monday, I (Javier) will spend two hours painting with my daughters San and Milly to keep my skills sharp.",
+        "Every Monday, I (Javier) will continue painting with my daughters San and Milly.",
+        "Every Monday, I (Javier) will continue painting with my daughters San and Milly."
+      ]
+    },
+    {
+      "question": "What appointments or activities are occurring at the community center?",
+      "answer": "At the community center, you have an appointment with Maria Gonzalez on 2023-10-06 at 10:00 AM, a meeting on 2023-10-20 at 2:00 PM, and another meeting on 2023-10-30 at 1:00 PM.",
+      "context": [
+        "I (Javier) have an appointment on 2023-10-06 at 10:00 AM at the local community center with Maria Gonzalez to discuss the mural project.",
+        "I (Javier) have a meeting with Maria Gonzalez on 2023-10-20 at 2:00 PM at the community center to review the sketch.",
+        "I (Javier) have a meeting with Maria Gonzalez on 2023-10-30 at 1:00 PM at the community center to finalize the mural details."
+      ]
+    },
+    {
+      "question": "What activities or events do I have with Maria Gonzalez?",
+      "answer": "You have an appointment on 2023-10-06 to discuss the mural project, a review meeting on 2023-10-20 at 2:00 PM, and a finalization meeting on 2023-10-30 at 1:00 PM with Maria Gonzalez.",
+      "context": [
+        "I (Javier) have an appointment on 2023-10-06 at 10:00 AM at the local community center with Maria Gonzalez to discuss the mural project.",
+        "I (Javier) have a meeting with Maria Gonzalez on 2023-10-20 at 2:00 PM at the community center to review the sketch.",
+        "I (Javier) have a meeting with Maria Gonzalez on 2023-10-30 at 1:00 PM at the community center to finalize the mural details."
+      ]
+    },
+    {
+      "question": "How often do I paint with my daughters San and Milly?",
+      "answer": "You paint with them every Monday, spending two hours each session, and this routine continues regularly.",
+      "context": [
+        "Every Monday, I (Javier) will spend two hours painting with my daughters San and Milly to keep my skills sharp.",
+        "Every Monday, I (Javier) will continue painting with my daughters San and Milly.",
+        "Every Monday, I (Javier) will continue painting with my daughters San and Milly."
+      ]
+    },
+    {
+      "question": "What activities are associated with my 'Community Mural: Phoenix History' project?",
+      "answer": "Your project involves sketching initial ideas, visiting the Phoenix Art Museum, buying art supplies, researching historical events, preparing materials, painting the background, working on the color palette, and adding cultural, agricultural, and historical details.",
+      "context": [
+        "I (Javier) want to start a new project called 'Community Mural: Phoenix History'. The due date is 2023-12-15, and it's high priority. I (Javier) want to depict the cultural history of Phoenix with other artists.",
+        "On 2023-10-02, I (Javier) will sketch some initial ideas for the 'Community Mural: Phoenix History' project.",
+        "On 2023-10-04, I (Javier) plan to visit the Phoenix Art Museum to gather inspiration for the mural.",
+        "I need to buy art supplies for the mural project on 2023-10-08.",
+        "On 2023-10-08, I (Javier) will research historical events in Phoenix to include in the mural.",
+        "I will start painting the background of the mural on 2023-10-12.",
+        "On 2023-10-15, I (Javier) will work on the color palette for the mural.",
+        "On 2023-10-19, I (Javier) will prepare materials for the mural project.",
+        "On 2023-10-25, I (Javier) will add details to the mural's cultural section."
+      ]
+    },
+      {
+        "question": "Which event do I have on 2023-10-20?",
+        "answer": "You are scheduled for a meeting with Maria Gonzalez on 2023-10-20 at 2:00 PM at the community center to review the sketch.",
+        "context": [
+          "I (Javier) have a meeting with Maria Gonzalez on 2023-10-20 at 2:00 PM at the community center to review the sketch.",
+          "Reviewed the mural sketch with Maria Gonzalez on 2023-10-20. She suggested adding more details about the agricultural history of Phoenix."
+        ]
+      },
+      {
+        "question": "What activities should I do before 2023-10-05?",
+        "answer": "Visit the Phoenix Art Museum on 2023-10-04 and sketch initial ideas for the mural project, which you should aim to complete by 2023-10-02.",
+        "context": [
+          "On 2023-10-02, I (Javier) will sketch some initial ideas for the 'Community Mural: Phoenix History' project.",
+          "On 2023-10-04, I (Javier) plan to visit the Phoenix Art Museum to gather inspiration for the mural."
+        ]
+      }
+    
+  ]

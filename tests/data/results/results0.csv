@@ -1,0 +1,7 @@
+2025-03-20,Javier,"{'context_precision': 0.4646, 'context_recall': 0.8333, 'answer_relevancy': 0.9529, 'faithfulness': 0.8928}", con dataset di chat
+2025-03-20,Javier,"{'context_precision': 0.4463, 'context_recall': 0.7333, 'answer_relevancy': 0.9731, 'faithfulness': 0.9000}", con dataset di deep
+2025-03-20,Javier,"{'context_precision': 0.4019, 'context_recall': 0.7417, 'answer_relevancy': 0.9600, 'faithfulness': 0.8042}",
+2025-03-20,Javier,"{'context_precision': 0.4478, 'context_recall': 0.7750, 'answer_relevancy': 0.9436, 'faithfulness': 0.9056}", con domande sistemate ma su giorni specifici
+2025-03-20,Javier,"{'context_precision': 0.4500, 'context_recall': 0.7250, 'answer_relevancy': 0.9429, 'faithfulness': 0.7503}", con più chunk e non nodi 
+2025-03-20,Javier,"{'non_llm_context_precision_with_reference': 0.6176, 'non_llm_context_recall': 0.8056, 'answer_relevancy': 0.9482, 'faithfulness': 0.7046}", solo chunk
+2025-03-20,Javier,"{'non_llm_context_precision_with_reference': 0.6310, 'non_llm_context_recall': 0.7333, 'answer_relevancy': 0.9482, 'faithfulness': 0.9281}"

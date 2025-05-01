@@ -1,0 +1,45 @@
+Current date: 2025/03/01
+Hi, I'm Alex (alex@example.com), and today I officially started working on my thesis project titled 
+"Support System for Alzheimer's Patients". 
+The goal is to develop a semantic system to assist Alzheimer's patients in recalling personal information. 
+This is a high priority and active project with a due date of 2025/03/25.
+
+
+Current date: 2025/03/05
+Today for my thesis project I have to organize the dataset and define the ontology structure.
+Tomorrow I have an appointment scheduled with Professor Senatore (senatore@example.edu) 
+at the Engineering Department of the University (123 University St., 40.730610, -73.935242). 
+The appointment is set for 10:00 AM, to discuss my approach to the thesis.
+
+
+Current date: 2025/03/09
+Today I must create the first draft of the thesis project and send it to Professor Senatore for feedback. 
+This activity has high priority and must be completed by the end of the day.
+
+
+Current date: 2025/03/10
+These are the activities I have to do on 2025/03/12 for my thesis project:
+- read the papers (average priority)
+- write the introduction (low priority)
+- look for new solutions (high priority)
+
+
+Current date: 2025/03/15
+On 2025/03/25 I have scheduled a final discussion event for my thesis project "Support System for Alzheimer's Patients". 
+Professor Senatore will attend. The event will occur at the Main Conference Room of the University at 2:00 PM. 
+The aim of this meeting is to discuss and decide if any final modifications are necessary before submission.
+
+
+Current date: 2025/03/20
+I would like to start a new, smaller project titled "StudyBuddy App". 
+It's an application aimed at assisting children in their studies, scheduled for completion by 2025/06/02. 
+For this project, I need to request information from the Department of Computer Science at the University.
+
+
+Current date: 2025/03/25
+Starting today, every day at 15:00 I will have to write the progress report and every day at 09:00 I have to take the dog for a walk to the park.
+
+
+Current date: 2025/03/30
+On 25/03 I had the final discussion of my thesis project "Support System for Alzheimer's Patients."
+The project was approved and now I have to prepare the final documentation for delivery.
