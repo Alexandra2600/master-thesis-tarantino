@@ -175,6 +175,7 @@ cython_debug/
 .DS_Store
 
 #Prototype
+proto
 proto1
 proto2
 proto3

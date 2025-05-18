@@ -22,7 +22,6 @@ USERNAME = os.getenv("NEO4J_USERNAME")
 PASSWORD = os.getenv("NEO4J_PASSWORD")
 
 
-driver = GraphDatabase.driver(URI, auth=(USERNAME, PASSWORD))
 embedder = OpenAIEmbeddings(model="text-embedding-3-large")
 # llm = OpenAILLM(model_name="gpt-4o", model_params={"temperature": 0})
 llm = OpenAILLM(model_name="gpt-4o-mini", model_params={"temperature": 0})
@@ -59,16 +58,17 @@ cypher_query = """
     AS info;
     """    
 
-hybridCypherRetr = HybridCypherRetriever(
+    
+    
+def ask_data(question): 
+    driver = GraphDatabase.driver(URI, auth=(USERNAME, PASSWORD))
+    hybridCypherRetr = HybridCypherRetriever(
         driver=driver,
         vector_index_name="textChuck",
         fulltext_index_name="textFulltext",
         retrieval_query=cypher_query,
         embedder=embedder,
     )
-    
-    
-def ask_data(question): 
 
     #Only respond with information mentioned in the Context. Do not inject any speculative information not mentioned   
     rag_template = RagTemplate(template='''Answer the Question using the following Context. 
@@ -83,11 +83,15 @@ def ask_data(question):
 
     rag = GraphRAG(retriever=hybridCypherRetr, llm=llm, prompt_template=rag_template)
     response = rag.search(query_text=question, retriever_config={"top_k": num_k})
+    
+    
+    driver.close()
     return response.answer
     
 
 
 def ask_data_RAG(question):
+    driver = GraphDatabase.driver(URI, auth=(USERNAME, PASSWORD))
     retriever = HybridRetriever(
         driver=driver,
         vector_index_name="textChuck",
@@ -98,11 +102,13 @@ def ask_data_RAG(question):
     rag = GraphRAG(retriever=retriever, llm=llm)
     response = rag.search(query_text=question, retriever_config={"top_k": num_k})
     
+    driver.close()
     return(response.answer)
       
 
 
 def return_node(question):  
+    driver = GraphDatabase.driver(URI, auth=(USERNAME, PASSWORD))
     
     retriever = HybridRetriever(
         driver=driver,
@@ -117,66 +123,42 @@ def return_node(question):
         content = i.content
         text = content.split("'text': '")[1].split("', '")[0]
         nodes.append(text)
+        
+        
+    driver.close()    
     return nodes
 
 
 
 def return_context(question):
+    driver = GraphDatabase.driver(URI, auth=(USERNAME, PASSWORD))
+    hybridCypherRetr = HybridCypherRetriever(
+        driver=driver,
+        vector_index_name="textChuck",
+        fulltext_index_name="textFulltext",
+        retrieval_query=cypher_query,
+        embedder=embedder,
+    )
+    
+        
     response = hybridCypherRetr.search(query_text=question, top_k=num_k)
     content = response.items[0].content
     clear = utility_function.clean_results(content)
+    
+    driver.close()
     return clear
 
 
-# def ask_llm(context, question):
-      
-#     from langchain.prompts import PromptTemplate
-
-#     prompt = PromptTemplate(
-#         input_variables=["context", "question"],
-#         template="""
-#             You are given a list of context sentences and a question. Your task is to:
-
-#             1. Provide a clear and concise answer to the question using only the information from the list.
-#             2. Select up to 3 items from the context list that justify your answer.
-
-#             Return your output strictly in the following JSON format:
-
-#             {{
-#             "answer": "<your answer>",
-#             "support": [
-#                 "<sentence 1>",
-#                 "<sentence 2>",
-#                 "<sentence 3>"
-#             ]
-#             }}
-
-#             If fewer than 3 sentences are needed, return only the relevant ones.
-
-#             Context (as list of sentences):
-#             {context}
-
-#             Question:
-#             {question}
-#             """
-#     )
-    
-#     formatted_prompt = prompt.format(context=context, question=question)
-#     response = llm_el.predict(formatted_prompt)
-    
-#     return response.strip()
-
-    
 
 
 if __name__ == "__main__":
-    question = "What activities are associated with my 'Scandinavian Pottery Workshop Series' project?"
+    question = "What you need to do on October 20, 2023?"
     
-    #print(return_context(question))
+    print(return_context(question))
     
-    #nodes = return_node(question)
-    #print(nodes)
+    #print(return_node(question))
     
-    #print(ask_data(question))
+    
+    print(ask_data(question))
     
     #print(ask_data_RAG(question))

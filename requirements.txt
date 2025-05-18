@@ -1,0 +1,17 @@
+pandas
+matplotlib
+numpy
+langchain
+langchain-community
+langchain-core
+langchain-experimental
+langchain-openai
+neo4j
+neo4j-graphrag
+streamlit
+ragas
+python-dotenv
+openai
+rdflib
+owlready2
+nest-asyncio

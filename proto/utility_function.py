@@ -15,6 +15,7 @@ ONTOLOGY_FILE = os.getenv("ONTOLOGY_FILE")
 llm_el = ChatOpenAI(model="gpt-4o-mini")
 
 
+
 def process_text(text, user_name, current_date):
     
     template = """
@@ -74,26 +75,37 @@ def process_date(text, current_date):
 def add_indexes():
     driver = GraphDatabase.driver(URI, auth=(USERNAME, PASSWORD))
     with driver.session() as session:
-        result = session.run("""
-                                CREATE VECTOR INDEX textChuck IF NOT EXISTS
-                                FOR (c:Chunk)
-                                ON c.embedding
-                                OPTIONS {indexConfig: {
-                                `vector.dimensions`: 3072,
-                                `vector.similarity_function`: 'cosine' } }
-                             """)
-        result.append(session.run("""
-                                CREATE FULLTEXT INDEX nameFullText IF NOT EXISTS
-                                FOR (n:Entity)
-                                ON (n.name)
-                             """))
-        
-        return(result)
+        session.run("""
+            CREATE VECTOR INDEX textChuck IF NOT EXISTS
+            FOR (c:Chunk)
+            ON c.embedding
+            OPTIONS {indexConfig: {
+                `vector.dimensions`: 3072,
+                `vector.similarity_function`: 'cosine'
+            }}
+        """)
+
+        session.run("""
+            CREATE FULLTEXT INDEX textFulltext IF NOT EXISTS
+            FOR (c:Chunk)
+            ON EACH [c.text]
+        """)
+
+    driver.close()
+    
+
+
+def clean_graph():
+    driver = GraphDatabase.driver(URI, auth=(USERNAME, PASSWORD))
+
+    with driver.session() as session:
+        session.run("MATCH (n) DETACH DELETE n")
+
+    # Chiusura del driver
+    driver.close()
         
         
 def clean_results(text):
-
-    # Dividere in 3 parti principali usando '\n\n'
     sections = text.split('-&&-')
     
     all_lines = sections[0].split('-&-') + sections[1].split('-&-') 
@@ -117,8 +129,4 @@ def clean_results(text):
 
 
 if __name__ == "__main__":
-    user_input = "Today I have to work on the computer and tomorrow I have a meeting with John"
-    user_name = "Alex"
-    current_date = "2025/03/11"
-    processed_text = process_text(user_input, user_name, current_date)
-    print(processed_text)
+    add_indexes()

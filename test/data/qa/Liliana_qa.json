@@ -1,0 +1,80 @@
+[
+  {
+    "question": "What is the deadline for my 'Dance Festival Preparation' project?",
+    "answer": "The project is due on 2023-12-15.",
+    "context": [
+      "I (Liliana) want to start a new project called 'Dance Festival Preparation' to get ready for the international dance festival on 2023-12-15. Due date: 2023-12-15. Priority: High."
+    ]
+  },
+  {
+    "question": "What time is my dance rehearsal with my sons on 2023-10-04?",
+    "answer": "Your dance rehearsal with your sons is at 5 PM at the Miami Dance Studio on 2023-10-04.",
+    "context": [
+      "On 2023-10-04, I (Liliana) have a dance rehearsal with my sons at 5 PM at the Miami Dance Studio."
+    ]
+  },
+  {
+    "question": "What are my scheduled activities on 2023-10-10?",
+    "answer": "On 2023-10-10, you have a doctor's appointment at 10 AM at Miami Health Clinic and a meeting with Maria at Caf\u00e9 Latino at 3 PM.",
+    "context": [
+      "I (Liliana) added a new activity: Meet with Maria (my dance partner) on 2023-10-10 at 3 PM at Caf\u00e9 Latino to discuss our routine.",
+      "On 2023-10-10, I (Liliana) have a doctor's appointment at 10 AM at Miami Health Clinic with Dr. Rodriguez."
+    ]
+  },
+  {
+    "question": "What are my current projects?",
+    "answer": "You have one current project: 'Dance Festival Preparation'.",
+    "context": [
+      "I (Liliana) want to start a new project called 'Dance Festival Preparation' to get ready for the international dance festival on 2023-12-15. Due date: 2023-12-15. Priority: High."
+    ]
+  },
+  {
+    "question": "What activities do I have at the Miami Dance Studio?",
+    "answer": "You have several activities at the Miami Dance Studio, including dance rehearsals on 2023-10-04, 2023-10-19, and October 27, and Salsa classes every Monday at 6 PM.",
+    "context": [
+      "On 2023-10-04, I (Liliana) have a dance rehearsal with my sons at 5 PM at the Miami Dance Studio.",
+      "On 2023-10-19, I (Liliana) have a dance rehearsal with my sons at 5 PM at the Miami Dance Studio.",
+      "Every Monday, I (Liliana) will attend a Salsa class at 6 PM at the Miami Dance Studio.",
+      "I have a dance rehearsal with my sons at 5 PM on October 27, 2023, at the Miami Dance Studio."
+    ]
+  },
+  {
+    "question": "What activities involve Maria?",
+    "answer": "You have a meeting with Maria at Caf\u00e9 Latino on 2023-10-10 to discuss your dance routine.",
+    "context": [
+      "I (Liliana) added a new activity: Meet with Maria (my dance partner) on 2023-10-10 at 3 PM at Caf\u00e9 Latino to discuss our routine.",
+      "On 2023-10-10, I (Liliana) met with Maria at Caf\u00e9 Latino to discuss our dance routine for the festival."
+    ]
+  },
+  {
+    "question": "How often do I take Salsa classes?",
+    "answer": "You attend Salsa classes every Monday at 6 PM at the Miami Dance Studio.",
+    "context": [
+      "Every Monday, I (Liliana) will attend a Salsa class at 6 PM at the Miami Dance Studio.",
+      "Every Monday, I (Liliana) attend my Salsa class at 6 PM at the Miami Dance Studio."
+    ]
+  },
+  {
+    "question": "What tasks are part of my 'Dance Festival Preparation' project?",
+    "answer": "Tasks for your 'Dance Festival Preparation' project include researching traditional Colombian dance costumes (due 2023-10-20), finalizing the music playlist (due 2023-11-01), and scheduling a dress rehearsal (due 2023-11-15).",
+    "context": [
+      "I (Liliana) added a new task for my 'Dance Festival Preparation' project: Research traditional Colombian dance costumes by 2023-10-20.",
+      "I (Liliana) added a new task for my 'Dance Festival Preparation' project: Finalize the music playlist by 2023-11-01.",
+      "I (Liliana) added a new task for my 'Dance Festival Preparation' project: Schedule a dress rehearsal by 2023-11-15."
+    ]
+  },
+  {
+    "question": "When did I complete the task on researching Colombian dance costumes?",
+    "answer": "You completed the task on researching traditional Colombian dance costumes for your 'Dance Festival Preparation' project.",
+    "context": [
+      "I (Liliana) completed researching traditional Colombian dance costumes for my 'Dance Festival Preparation' project."
+    ]
+  },
+  {
+    "question": "When did I finalize the music playlist for the dance festival?",
+    "answer": "You finalized the music playlist for your 'Dance Festival Preparation' project on 2023-10-26.",
+    "context": [
+      "On 2023-10-26, I (Liliana) finalized the music playlist for my 'Dance Festival Preparation' project."
+    ]
+  }
+]

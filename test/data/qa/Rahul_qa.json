@@ -1,0 +1,42 @@
+[
+  {
+    "question": "What is the deadline for my 'EcoBuild Initiative' project?",
+    "answer": "The project is due on 2023-12-31."
+  },
+  {
+    "question": "When and where is my appointment with Mr. Kumar?",
+    "answer": "Your appointment with Mr. Kumar is on 2023-11-04 at 10:00 AM at the Downtown Office."
+  },
+  {
+    "question": "What are my scheduled activities on 2023-11-15?",
+    "answer": "On 2023-11-15, you must finalize the supplier contracts, review the latest design revisions and compile detailed feedback, and submit the final draft of your project proposal."
+  },
+  {
+    "question": "What are my current projects?",
+    "answer": "You are currently working on the 'EcoBuild Initiative' project."
+  },
+  {
+    "question": "What activities are scheduled at the Downtown Office?",
+    "answer": "At the Downtown Office, you have a meeting with Mr. Kumar on 2023-11-04, a product demo setup on 2023-11-07, an appointment with Mr. Patel on 2023-11-12, and a meeting with the marketing head on 2023-11-18."
+  },
+  {
+    "question": "What meetings or activities involve Ms. Sharma?",
+    "answer": "You have an appointment with Ms. Sharma on 2023-11-07 at 2:00 PM at the Innovation Lab, and you had a follow-up meeting with her on 2023-11-27 to refine the development plan."
+  },
+  {
+    "question": "How often do I have team meetings for the project?",
+    "answer": "You have recurring team meetings every Tuesday starting from 2023-11-07 and review meetings every Friday starting from 2023-11-20."
+  },
+  {
+    "question": "What tasks are associated with the 'EcoBuild Initiative' project?",
+    "answer": "Tasks include prototype design, presentation preparation, strategy review, supplier contract finalization, financial projection and analysis, stakeholder coordination, UI design, and project proposal submission."
+  },
+  {
+    "question": "When will I meet with the business consultant Ms. Roy?",
+    "answer": "You have a scheduled appointment with Ms. Roy on 2023-11-23 at 3:00 PM at the Innovation Lab."
+  },
+  {
+    "question": "When will I record the prototype demo video and meet with the design team?",
+    "answer": "You plan to record the demo video and discuss it with the design team on 2023-11-26."
+  }
+]

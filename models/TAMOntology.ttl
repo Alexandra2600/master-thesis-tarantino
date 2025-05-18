@@ -9,11 +9,11 @@
 @base <http://www.semanticweb.org/alexandra.tarantino/tam/> .
 
 <http://www.semanticweb.org/alexandra.tarantino/tam> rdf:type owl:Ontology ;
+                                                      dcterms:creator "Alexandra Tarantino" ;
                                                       dcterms:hasVersion 1.0 ;
                                                       dcterms:subject "TAM: An ontology for Time Assistive Management"@en ,
                                                                       "Time management, scheduling, assistive technologies, semantic web, knowledge representation, activity"@en ;
-                                                      rdfs:comment "TAM (Time Assistive Management) is an ontology designed to support the structured representation of time-based activities, scheduled events, and assistive interactions for users requiring time management assistance. It models key concepts such as activity, place, event, project and their relationship."@en ,
-                                                                   "Alexandra Tarantino" ;
+                                                      rdfs:comment "TAM (Time Assistive Management) is an ontology designed to support the structured representation of time-based activities, scheduled events, and assistive interactions for users requiring time management assistance. It models key concepts such as activity, place, event, project and their relationship."@en ;
                                                       rdfs:label "TAM: An ontology for Time Assistive Management"@en .
 
 #################################################################
@@ -22,6 +22,7 @@
 
 ###  http://purl.org/dc/terms/creator
 dcterms:creator rdf:type owl:AnnotationProperty .
+
 
 ###  http://purl.org/dc/terms/hasVersion
 dcterms:hasVersion rdf:type owl:AnnotationProperty .
@@ -40,215 +41,255 @@ owl:equivalentClass rdf:type owl:AnnotationProperty .
 
 
 #################################################################
+#    Datatypes
+#################################################################
+
+###  http://www.w3.org/2001/XMLSchema#date
+xsd:date rdf:type rdfs:Datatype .
+
+
+#################################################################
 #    Object Properties
 #################################################################
 
-###  http://www.semanticweb.org/alexandra.tarantino/tam#involvedIn
-:involvedIn rdf:type owl:ObjectProperty ;
-           rdfs:domain :Agent ;
-           rdfs:range :Activity, 
-                        :Event ;
-           rdfs:comment "An agent is involved in an activity or event."@en ;
-           rdfs:label "involvedIn"@en .
-
-###  http://www.semanticweb.org/alexandra.tarantino/tam#occursAt
+###  http://www.semanticweb.org/alexandra.tarantino/tam/occursAt
 :occursAt rdf:type owl:ObjectProperty ;
-          rdfs:domain :Activity, 
-                       :Event ;
+          rdfs:domain :Activity ;
           rdfs:range :Place ;
-          rdfs:comment "An activity or event takes place at a specific location."@en ;
+          rdfs:comment "Indicates the place where the activity or event occurs."@en ;
           rdfs:label "occursAt"@en .
 
-###  http://www.semanticweb.org/alexandra.tarantino/tam#worksOn
-:worksOn rdf:type owl:ObjectProperty ;
-         rdfs:domain :Agent ;
-         rdfs:range :Project ;
-         rdfs:comment "An agent is involved in working on a project."@en ;
-         rdfs:label "worksOn"@en .
 
-###  http://www.semanticweb.org/alexandra.tarantino/tam#projectActivity
+###  http://www.semanticweb.org/alexandra.tarantino/tam/partecipatesIn
+:partecipatesIn rdf:type owl:ObjectProperty ;
+                rdfs:domain :Person ;
+                rdfs:range :Activity ;
+                rdfs:comment "Indicates that a person is involved in an activity."@en ;
+                rdfs:label "partecipatesIn"@en .
+
+
+###  http://www.semanticweb.org/alexandra.tarantino/tam/projectActivity
 :projectActivity rdf:type owl:ObjectProperty ;
                  rdfs:domain :Project ;
                  rdfs:range :Activity ;
-                 rdfs:comment "A project includes one or more activities."@en ;
+                 rdfs:comment "Connects a project with its related activities or events."@en ;
                  rdfs:label "projectActivity"@en .
+
+
+###  http://www.semanticweb.org/alexandra.tarantino/tam/worksOn
+:worksOn rdf:type owl:ObjectProperty ;
+         rdfs:domain :Person ;
+         rdfs:range :Project ;
+         rdfs:comment "Indicates that a person is actively working on a project."@en ;
+         rdfs:label "worksOn"@en .
 
 
 #################################################################
 #    Data properties
 #################################################################
 
-###  http://www.semanticweb.org/alexandra.tarantino/tam#name
-:name rdf:type owl:DatatypeProperty ;
-      rdfs:domain :TAMThing ;
-      rdfs:range xsd:string ;
-      rdfs:comment "The name of TAM thing"@en ;
-      rdfs:label "name"@en .
-
-###  http://www.semanticweb.org/alexandra.tarantino/tam#description
-:description rdf:type owl:DatatypeProperty ;
-             rdfs:domain :TAMThing ;
-             rdfs:range xsd:string ;
-             rdfs:comment "A description of the TAM thing"@en ;
-             rdfs:label "description"@en .
-
-###  http://www.semanticweb.org/alexandra.tarantino/tam#statusActivity
-:statusActivity rdf:type owl:DatatypeProperty ;
-                rdfs:domain :Activity ;
-                rdfs:range xsd:string ;
-                rdfs:comment "The status of an activity, which can take only the following values: 'planned' or 'completed'"@en ;
-                rdfs:label "statusActivity"@en .
-
-###  http://www.semanticweb.org/alexandra.tarantino/tam#priority
-:priority rdf:type owl:DatatypeProperty ;
-          rdfs:domain :Activity, 
-                       :Event, 
-                       :Project ;
-          rdfs:range xsd:string ;
-          rdfs:comment "The priority of an activity, event or project that can take only the following values: 'low', 'medium', 'high' and 'important'"@en ;
-          rdfs:label "priority"@en .
-
-###  http://www.semanticweb.org/alexandra.tarantino/tam#startDateTime
-:startDateTime rdf:type owl:DatatypeProperty ;
-           rdfs:domain :Activity, 
-                        :Event, 
-                        :Project ;
-           rdfs:range xsd:dateTime ;
-           rdfs:comment "The start date of an activity, event or project"@en ;
-           rdfs:label "startDateTime"@en .
-
-###  http://www.semanticweb.org/alexandra.tarantino/tam#endDateTime
-:endDateTime rdf:type owl:DatatypeProperty ;
-         rdfs:domain :Activity, 
-                      :Event, 
-                      :Project ;
-         rdfs:range xsd:dateTime ;
-         rdfs:comment "The end date of an activity, event or project"@en ;
-         rdfs:label "endDateTime"@en .
-
-###  http://www.semanticweb.org/alexandra.tarantino/tam#goal
-:goal rdf:type owl:DatatypeProperty ;
-      rdfs:domain :Project ;
-      rdfs:range xsd:string ;
-      rdfs:comment "The goal of a project"@en ;
-      rdfs:label "goal"@en .
-
-###  http://www.semanticweb.org/alexandra.tarantino/tam#statusProject
-:statusProject rdf:type owl:DatatypeProperty ;
-              rdfs:domain :Project ;
-              rdfs:range xsd:string ;
-              rdfs:comment "The status of a project, which can take only the following values: 'active' or 'completed'"@en ;
-              rdfs:label "statusProject"@en .
-
-###  http://www.semanticweb.org/alexandra.tarantino/tam#statusEvent
-:statusEvent rdf:type owl:DatatypeProperty ;
-            rdfs:domain :Event ;
-            rdfs:range xsd:string ;
-            rdfs:comment "The status of an event, which can take only the following values: 'scheduled' or 'completed'"@en ;
-            rdfs:label "statusEvent"@en .
-
-###  http://www.semanticweb.org/alexandra.tarantino/tam#address
+###  http://www.semanticweb.org/alexandra.tarantino/tam/address
 :address rdf:type owl:DatatypeProperty ;
          rdfs:domain :Place ;
          rdfs:range xsd:string ;
-         rdfs:comment "The address of a place"@en ;
+         rdfs:comment "Specifies the physical address of the place where an activity or event may occur."@en ;
          rdfs:label "address"@en .
 
-###  http://www.semanticweb.org/alexandra.tarantino/tam#latitude
-:latitude rdf:type owl:DatatypeProperty ;
-          rdfs:domain :Place ;
-          rdfs:range xsd:float ;
-          rdfs:comment "The latitude of a place"@en ;
-          rdfs:label "latitude"@en .
 
-###  http://www.semanticweb.org/alexandra.tarantino/tam#longitude
-:longitude rdf:type owl:DatatypeProperty ;
-           rdfs:domain :Place ;
-           rdfs:range xsd:float ;
-           rdfs:comment "The longitude of a place"@en ;
-           rdfs:label "longitude"@en .
-
-###  http://www.semanticweb.org/alexandra.tarantino/tam#firstName
-:firstName rdf:type owl:DatatypeProperty ;
-           rdfs:domain :Person ;
-           rdfs:range xsd:string ;
-           rdfs:comment "The first name of a person"@en ;
-           rdfs:label "firstName"@en .
-
-###  http://www.semanticweb.org/alexandra.tarantino/tam#lastName
-:lastName rdf:type owl:DatatypeProperty ;
-          rdfs:domain :Person ;
-          rdfs:range xsd:string ;
-          rdfs:comment "The last name of a person"@en ;
-          rdfs:label "lastName"@en .
+###  http://www.semanticweb.org/alexandra.tarantino/tam/atTime
+:atTime rdf:type owl:DatatypeProperty ;
+        rdfs:domain :Activity ;
+        rdfs:range xsd:dateTime ;
+        rdfs:comment "Indicates the time at which the activity is scheduled to start. For routine activities, it refers to the recurring time of day."@en ;
+        rdfs:label "atTime"@en .
 
 
-###  http://www.semanticweb.org/alexandra.tarantino/tam#email
+###  http://www.semanticweb.org/alexandra.tarantino/tam/description
+:description rdf:type owl:DatatypeProperty ;
+             rdfs:domain :Activity ,
+                         :Place ,
+                         :Project ;
+             rdfs:range xsd:string ;
+             rdfs:comment "Detailed description of the entity."@en ;
+             rdfs:label "description"@en .
+
+
+###  http://www.semanticweb.org/alexandra.tarantino/tam/dueDate
+:dueDate rdf:type owl:DatatypeProperty ;
+         rdfs:domain :Project ;
+         rdfs:range xsd:date ;
+         rdfs:comment "Specifies the deadline or expected completion date of the project. To be defined only if specified directly in the text."@en ;
+         rdfs:label "dueDate"@en .
+
+
+###  http://www.semanticweb.org/alexandra.tarantino/tam/email
 :email rdf:type owl:DatatypeProperty ;
        rdfs:domain :Person ;
        rdfs:range xsd:string ;
-       rdfs:comment "The email of a person"@en ;
+       rdfs:comment "Email address of the person."@en ;
        rdfs:label "email"@en .
 
 
-###  http://www.semanticweb.org/alexandra.tarantino/tam#phone
+###  http://www.semanticweb.org/alexandra.tarantino/tam/endTime
+:endTime rdf:type owl:DatatypeProperty ;
+         rdfs:domain :Event ;
+         rdfs:range xsd:dateTime ;
+         rdfs:comment "Indicates the end time of the event."@en ;
+         rdfs:label "endTime"@en .
+
+
+###  http://www.semanticweb.org/alexandra.tarantino/tam/frequency
+:frequency rdf:type owl:DatatypeProperty ;
+           rdfs:domain :RoutineActivity ;
+           rdfs:range xsd:string ;
+           rdfs:comment "Specifies how often the routine activity occurs. Accepted values: daily, weekly, monthly, other."@en ;
+           rdfs:label "frequency"@en .
+
+
+###  http://www.semanticweb.org/alexandra.tarantino/tam/goal
+:goal rdf:type owl:DatatypeProperty ;
+      rdfs:domain :Project ;
+      rdfs:range xsd:string ;
+      rdfs:comment "Describes the main objective or intended outcome of the project."@en ,
+                   "The goal of a project"@en ;
+      rdfs:label "goal"@en .
+
+
+###  http://www.semanticweb.org/alexandra.tarantino/tam/latitude
+:latitude rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Place ;
+          rdfs:range xsd:float ;
+          rdfs:comment "Specifies the geographic latitude of the place in decimal degrees."@en ;
+          rdfs:label "latitude"@en .
+
+
+###  http://www.semanticweb.org/alexandra.tarantino/tam/longitude
+:longitude rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Place ;
+           rdfs:range xsd:float ;
+           rdfs:comment "Specifies the geographic longitude of the place in decimal degrees."@en ;
+           rdfs:label "longitude"@en .
+
+
+###  http://www.semanticweb.org/alexandra.tarantino/tam/name
+:name rdf:type owl:DatatypeProperty ;
+      rdfs:domain :TAMThing ;
+      rdfs:range xsd:string ;
+      rdfs:comment "Name or short description of the TAM entity."@en ;
+      rdfs:label "name"@en .
+
+
+###  http://www.semanticweb.org/alexandra.tarantino/tam/onDate
+:onDate rdf:type owl:DatatypeProperty ;
+        rdfs:domain :Activity ;
+        rdfs:range xsd:date ;
+        rdfs:comment "Indicates the date on which the activity takes place. For events, it is the scheduled date; for routine activities, it marks the start of the recurrence pattern."@en ;
+        rdfs:label "onDate"@en .
+
+
+###  http://www.semanticweb.org/alexandra.tarantino/tam/phone
 :phone rdf:type owl:DatatypeProperty ;
        rdfs:domain :Person ;
        rdfs:range xsd:string ;
-       rdfs:comment "The phone number of a person"@en ;
+       rdfs:comment "Phone number of the person."@en ;
        rdfs:label "phone"@en .
+
+
+###  http://www.semanticweb.org/alexandra.tarantino/tam/priority
+:priority rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Activity ;
+          rdfs:range xsd:string ;
+          rdfs:comment "Indicates the importance level of the activity. Accepted values: low, medium (default), high."@en ;
+          rdfs:label "priority"@en .
+
+
+###  http://www.semanticweb.org/alexandra.tarantino/tam/priorityProject
+:priorityProject rdf:type owl:DatatypeProperty ;
+                 rdfs:domain :Project ;
+                 rdfs:range xsd:string ;
+                 rdfs:comment "Specifies the priority level of the project. Accepted values: low, medium (default), high."@en ;
+                 rdfs:label "priorityProject"@en .
+
+
+###  http://www.semanticweb.org/alexandra.tarantino/tam/status
+:status rdf:type owl:DatatypeProperty ;
+        rdfs:domain :Activity ;
+        rdfs:range xsd:string ;
+        rdfs:comment "Indicates whether the activity or event is planned or has been completed. Accepted values: planned (default), completed."@en ;
+        rdfs:label "status"@en .
+
+
+###  http://www.semanticweb.org/alexandra.tarantino/tam/statusProject
+:statusProject rdf:type owl:DatatypeProperty ;
+               rdfs:domain :Project ;
+               rdfs:range xsd:string ;
+               rdfs:comment "Indicates the current state of the project. Accepted values: active (default), completed."@en ;
+               rdfs:label "statusProject"@en .
+
+
+###  http://www.semanticweb.org/alexandra.tarantino/tam/type
+:type rdf:type owl:DatatypeProperty ;
+      rdfs:domain :Event ;
+      rdfs:range xsd:string ;
+      rdfs:comment "Specifies the category of the event. Accepted values: meeting, appointment, reminder, other."@en ;
+      rdfs:label "type"@en .
 
 
 #################################################################
 #    Classes
 #################################################################
 
-###  http://www.semanticweb.org/alexandra.tarantino/tam#Activity
+###  http://www.semanticweb.org/alexandra.tarantino/tam/Activity
 :Activity rdf:type owl:Class ;
           rdfs:subClassOf :TAMThing ;
-          rdfs:comment "A specific action performed by an agent or planned for the future, which may be part of a project or a routine."@en ;
+          rdfs:comment "An Activity is a time-related action typically expressed as a verb in natural language, often preceded by phrases like has to, needs to, will, is going to, or is required to."@en ;
           rdfs:label "Activity"@en .
 
 
-###  http://www.semanticweb.org/alexandra.tarantino/tam#Agent
-:Agent rdf:type owl:Class ;
-       rdfs:subClassOf :TAMThing ;
-       rdfs:comment "An individual or entity involved in activities and appointments, which can be the main user or other participants, and may also work on a project."@en ;
-       rdfs:label "Agent"@en ;
-       owl:equivalentClass "http://xmlns.com/foaf/spec/Agent" .
-
-###  http://www.semanticweb.org/alexandra.tarantino/tam#Person
-:Person rdf:type owl:Class ;
-        rdfs:subClassOf :Agent ;
-        rdfs:comment "A human being, which can be the main user or other participants."@en ;
-        rdfs:label "Person"@en ;
-        owl:equivalentClass "http://xmlns.com/foaf/spec/Person" .
-
-
-###  http://www.semanticweb.org/alexandra.tarantino/tam#Event
+###  http://www.semanticweb.org/alexandra.tarantino/tam/Event
 :Event rdf:type owl:Class ;
-       rdfs:subClassOf :TAMThing ;
-       rdfs:comment "A specific occurrence or happening at a particular time and place, involving one or more agent"@en ;
+       rdfs:subClassOf :Activity ;
+       rdfs:comment "An Event is a scheduled activity with a defined start and end time, typically identified in natural language by expressions such as meeting, appointment, call, or session, often associated with a specific date or time."@en ;
        rdfs:label "Event"@en .
 
 
-###  http://www.semanticweb.org/alexandra.tarantino/tam#Place
+###  http://www.semanticweb.org/alexandra.tarantino/tam/Person
+:Person rdf:type owl:Class ;
+        owl:equivalentClass foaf:Person ;
+        rdfs:subClassOf :TAMThing ;
+        rdfs:comment "A Person represents an individual involved in activities, events, or projects, typically referred to in natural language using names or personal pronouns like I, me, my, or proper nouns."@en ;
+        rdfs:label "Person"@en .
+
+
+###  http://www.semanticweb.org/alexandra.tarantino/tam/Place
 :Place rdf:type owl:Class ;
        rdfs:subClassOf :TAMThing ;
-       rdfs:comment "A specific location or area where activities and events take place."@en ;
+       rdfs:comment "A Place is a physical or virtual location where activities or events occur, usually mentioned in natural language as a named location, address, or spatial reference like at home or in the office."@en ;
        rdfs:label "Place"@en .
 
 
-###  http://www.semanticweb.org/alexandra.tarantino/tam#Project
+###  http://www.semanticweb.org/alexandra.tarantino/tam/Project
 :Project rdf:type owl:Class ;
          rdfs:subClassOf :TAMThing ;
-         rdfs:comment "A set of activities and tasks planned and organized to achieve a specific goal or objective."@en ;
+         rdfs:comment "A Project is a structured collection of related activities and events working toward a specific goal, often referred to in natural language using expressions like my thesis, the app I'm building, or the research project."@en ;
          rdfs:label "Project"@en .
 
-###  http://www.semanticweb.org/alexandra.tarantino/tam#TAMThing
+
+###  http://www.semanticweb.org/alexandra.tarantino/tam/RoutineActivity
+:RoutineActivity rdf:type owl:Class ;
+                 rdfs:subClassOf :Activity ;
+                 rdfs:comment "A RoutineActivity is a recurring activity that happens at regular intervals, typically expressed in natural language using patterns like every day, each morning, on Mondays, or weekly."@en ;
+                 rdfs:label "RoutineActivity"@en .
+
+
+###  http://www.semanticweb.org/alexandra.tarantino/tam/TAMThing
 :TAMThing rdf:type owl:Class ;
-              rdfs:comment "The superclass of all classes in the TAM ontology."@en ;
-              rdfs:label "TAMThing"@en .
+          rdfs:comment "The superclass of all classes in the TAM ontology."@en ;
+          rdfs:label "TAMThing"@en .
+
+
+###  http://xmlns.com/foaf/spec/Person
+foaf:Person rdf:type owl:Class .
 
 
 ###  Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi
