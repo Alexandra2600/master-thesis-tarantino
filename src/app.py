@@ -8,6 +8,7 @@ import utils
 
 # Get current date in yyyy/mm/dd format
 current_date = datetime.today().strftime("%Y/%m/%d")
+user_name = "Mateo"
 
 # =========================
 # STYLING
@@ -70,7 +71,7 @@ st.markdown("""
     </h1>
 """, unsafe_allow_html=True)
 
-st.write(f"📅 <b>Today is:</b> {current_date}", unsafe_allow_html=True)
+st.write(f"👤 <b>User:</b> {user_name}  &nbsp;&nbsp;&nbsp; 📅 <b>Today is:</b> {current_date}", unsafe_allow_html=True)
 
 
 # =========================
@@ -87,7 +88,7 @@ with tab_insert:
     
     if st.button("📌 Save this"):
         # Normalize temporal references and personalize pronouns
-        user_input = utils.process_text(text=user_input, current_date=current_date, user_name="Samuel")
+        user_input = utils.process_text(text=user_input, current_date=current_date, user_name=user_name)
         
         # Add to KG 
         response = asyncio.run(KG_construction.add_user_input_to_kg(user_input))
@@ -108,7 +109,7 @@ with tab_query:
         question = utils.process_date(text=question, current_date=current_date)
 
         # Use GraphRAG to generate answer
-        answer = GraphRAG.query_graph_with_context(question)
+        answer = GraphRAG.answer_graphRAG(question)
 
         st.markdown(f"""
             <div style='background-color: #ffffff;
